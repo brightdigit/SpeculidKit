@@ -1,3 +1,6 @@
 [submodule "scripts/github-markdown-toc"]
 	path = scripts/github-markdown-toc
 	url = https://github.com/ekalinin/github-markdown-toc.git
+[submodule "packages/CairoSVG"]
+	path = packages/CairoSVG
+	url = https://github.com/brightdigit/CairoSVG.git
