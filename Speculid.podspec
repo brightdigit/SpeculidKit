@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = "Speculid"
+  spec.name         = "SpeculidKit"
   spec.version      = "3.0.0.alpha.1"
   spec.summary      = "Lorem Ipsum"
 
@@ -80,7 +80,7 @@ Lorem Description
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/brightdigit/Speculid.git", :tag => "3.0.0.alpha.1" }
+  spec.source       = { :git => "https://github.com/brightdigit/SpeculidKit.git", :tag => "3.0.0.alpha.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "GLib",
+        "repositoryURL": "https://github.com/rhx/SwiftGLib.git",
+        "state": {
+          "branch": "master",
+          "revision": "e1a7da27e180e4f97ed89cf5de0a3d9461b87f51",
+          "version": null
+        }
+      },
+      {
+        "package": "GLibObject",
+        "repositoryURL": "https://github.com/rhx/SwiftGObject.git",
+        "state": {
+          "branch": "master",
+          "revision": "a21dcfc8588584214d40777e9b8ec5caea5fe04f",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
