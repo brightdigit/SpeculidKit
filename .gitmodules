@@ -4,3 +4,11 @@
 [submodule "packages/CairoSVG"]
 	path = packages/CairoSVG
 	url = https://github.com/brightdigit/CairoSVG.git
+[submodule "packages/GampKit"]
+	path = packages/GampKit
+	url = https://github.com/brightdigit/GampKit.git
+	branch = feature/speculid-support
+[submodule "packages/AssetLib"]
+	path = packages/AssetLib
+	url = https://github.com/brightdigit/AssetLib.git
+	branch = feature/speculid-support
