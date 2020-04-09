@@ -1,6 +1,17 @@
 import AppKit
-import CairoSVG
 import Foundation
+
+public enum Dimension {
+  case width
+  case height
+  case scale
+  case unspecified
+}
+
+public struct GeometryDimension {
+  public let value : Float
+  public let dimension : Dimension
+}
 
 public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Codable {
   public let assetDirectoryRelativePath: String

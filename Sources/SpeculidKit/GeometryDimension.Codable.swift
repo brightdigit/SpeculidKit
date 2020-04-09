@@ -1,7 +1,9 @@
-import CairoSVG
-
+public struct Size {
+  public let width : Float
+  public let height : Float
+}
 extension GeometryDimension: Codable {
-  internal static func parse(string: String) -> (dimension: Dimension, value: CGFloat)? {
+  internal static func parse(string: String) -> (dimension: Dimension, value: Float)? {
     let value: Double
     let dimension: Dimension
     if let width = Double(string) {
@@ -13,7 +15,7 @@ extension GeometryDimension: Codable {
     } else {
       return nil
     }
-    return (dimension, CGFloat(value))
+    return (dimension, Float(value))
   }
 
   public var description: String {
@@ -32,7 +34,7 @@ extension GeometryDimension: Codable {
     self.init(value: geometryDimension.value, dimension: geometryDimension.dimension)
   }
 
-  public init(size: CGSize, preferWidth: Bool? = true) throws {
+  public init(size: Size, preferWidth: Bool? = true) throws {
     if preferWidth == nil, size.height != size.width {
       throw BadGeometryCGSizeValueError(size: size)
     }

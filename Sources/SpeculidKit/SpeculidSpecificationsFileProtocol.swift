@@ -1,5 +1,4 @@
 import AppKit
-import CairoSVG
 import Foundation
 
 public protocol SpeculidSpecificationsFileProtocol {

@@ -1,5 +1,4 @@
 import AppKit
-import CairoSVG
 import Foundation
 /**
  MissingHashMarkAsPrefix:   "Invalid RGB string, missing '#' as prefix"
@@ -137,7 +136,7 @@ extension NSColor {
   // swiftlint:enable identifier_name
 }
 
-extension NSColor: CairoColorProtocol {
+extension NSColor {
   public var red: Double {
     Double(redComponent)
   }
