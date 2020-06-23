@@ -4,6 +4,7 @@
 [submodule "packages/CairoSVG"]
 	path = packages/CairoSVG
 	url = https://github.com/brightdigit/CairoSVG.git
+	branch = xcframework
 [submodule "packages/GampKit"]
 	path = packages/GampKit
 	url = https://github.com/brightdigit/GampKit.git
