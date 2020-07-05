@@ -20,7 +20,7 @@ let package = Package(
     
     .package(path: "./packages/AssetLib"),
     .package(path: "./packages/GampKit"),
-    .package(url: "https://github.com/swhitty/SwiftDraw.git", from: "0.7.0")
+    .package(path: "./packages/SwiftDraw"),
   ],
   targets: [
     // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -31,7 +31,8 @@ let package = Package(
     ),
     .binaryTarget(
         name: "CairoSVG",
-        path: "packages/CairoSVG.xcframework"
+        url: "https://github.com/brightdigit/CairoSVG/releases/download/0.1.0-alpha.1/CairoSVG.xcframework.zip",
+        checksum: "3a1f7ba992691e7c4b191c79f8e8cb4318d61811fc47dd0e09314c321fac023a"
     ),
     .testTarget(
       name: "SpeculidKitTests",

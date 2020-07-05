@@ -13,3 +13,7 @@
 	path = packages/AssetLib
 	url = https://github.com/brightdigit/AssetLib.git
 	branch = feature/speculid-support
+[submodule "packages/SwiftDraw"]
+	path = packages/SwiftDraw
+	url = git@github.com:brightdigit/SwiftDraw.git
+	branch = feature/speculid-support
