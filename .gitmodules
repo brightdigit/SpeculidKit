@@ -4,7 +4,7 @@
 [submodule "packages/CairoSVG"]
 	path = packages/CairoSVG
 	url = https://github.com/brightdigit/CairoSVG.git
-	branch = xcframework
+	branch = xcframework-as-ci
 [submodule "packages/GampKit"]
 	path = packages/GampKit
 	url = https://github.com/brightdigit/GampKit.git
@@ -12,4 +12,8 @@
 [submodule "packages/AssetLib"]
 	path = packages/AssetLib
 	url = https://github.com/brightdigit/AssetLib.git
+	branch = feature/speculid-support
+[submodule "packages/SwiftDraw"]
+	path = packages/SwiftDraw
+	url = git@github.com:brightdigit/SwiftDraw.git
 	branch = feature/speculid-support
