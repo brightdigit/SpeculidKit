@@ -1,4 +1,5 @@
 import Foundation
+import AssetLib
 
 public protocol SpeculidImageSpecificationBuilderProtocol {
   func imageSpecification(

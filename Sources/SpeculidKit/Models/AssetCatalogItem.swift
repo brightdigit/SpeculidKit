@@ -6,6 +6,7 @@
 //  Copyright © 2019 Bright Digit, LLC. All rights reserved.
 //
 import Foundation
+import AssetLib
 
 @objc open class AssetCatalogItem: NSObject, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true

@@ -1,6 +1,6 @@
 import AppKit
 import Foundation
-import SwiftVer
+import GampKit
 
 extension OperatingSystemVersion {
   var fullDescription: String {
@@ -20,7 +20,7 @@ func exceptionHandlerMethod(exception: NSException) {
 
 public typealias RegularExpressionArgumentSet = (String, options: NSRegularExpression.Options)
 open class Application: NSApplication, ApplicationProtocol {
-  public func withInstaller(_ completed: (Result<InstallerProtocol>) -> Void) {
+  public func withInstaller(_ completed: (Result<InstallerProtocol, Error>) -> Void) {
     installerObjectInterfaceProvider.remoteObjectProxyWithHandler(completed)
   }
 
@@ -128,35 +128,39 @@ open class Application: NSApplication, ApplicationProtocol {
 
     let operatingSystem = ProcessInfo.processInfo.operatingSystemVersion.fullDescription
     let applicationVersion: String
-    if let version = self.version {
-      applicationVersion = (try? version.fullDescription(withLocale: nil)) ?? ""
-    } else {
+//    if let version = self.version {
+//      applicationVersion = (try? version.fullDescription(withLocale: nil)) ?? ""
+//    } else {
       applicationVersion = ""
-    }
+    //}
 
     let analyticsConfiguration = AnalyticsConfiguration(
       trackingIdentifier: "UA-33667276-6",
       applicationName: "speculid",
-      applicationVersion: applicationVersion,
+      applicationVersion: applicationVersion, clientIdentifier: ClientIdentifier.shared.clientIdentifier,
       customParameters: [.operatingSystemVersion: operatingSystem, .model: Sysctl.model]
     )
 
     remoteObjectInterfaceProvider.remoteObjectProxyWithHandler { result in
       switch result {
-      case let .error(error):
+      case let .failure(error):
         preconditionFailure("Could not connect to XPS Service: \(error)")
       case let .success(service):
         self.service = service
       }
     }
 
+    
     builder = SpeculidBuilder(tracker: self.tracker, configuration: configuration, imageSpecificationBuilder: imageSpecificationBuilder)
-    let tracker = AnalyticsTracker(configuration: analyticsConfiguration, sessionManager: AnalyticsSessionManager())
+    let tracker = AnalyticsTracker(configuration: analyticsConfiguration, sessionManager: AnalyticsSessionManager(session: AnalyticsURLSession()))
     NSSetUncaughtExceptionHandler(exceptionHandlerMethod)
 
-    exceptionHandler = tracker.track
+    exceptionHandler = {
+      tracker.track($0, {_ in })
+    }
 
-    tracker.track(event: AnalyticsEvent(category: "main", action: "launch", label: "application"))
+    
+    tracker.track(AnalyticsEvent(category: "main", action: "launch", label: "application")) {_ in }
 
     self.tracker = tracker
 
@@ -200,15 +204,15 @@ open class Application: NSApplication, ApplicationProtocol {
   }
 
   public static let bundle = Bundle(for: Application.self)
-
-  public static let vcs = VersionControlInfo(jsonResource: "autorevision", fromBundle: Application.bundle)
-
-  public static let sbd =
-    Stage.dictionary(fromPlistAtURL: Application.bundle.url(forResource: "versions", withExtension: "plist")!)!
-
-  public let version = Version(
-    bundle: bundle,
-    dictionary: sbd,
-    versionControl: vcs
-  )
+//
+//  public static let vcs = VersionControlInfo(jsonResource: "autorevision", fromBundle: Application.bundle)
+//
+//  public static let sbd =
+//    Stage.dictionary(fromPlistAtURL: Application.bundle.url(forResource: "versions", withExtension: "plist")!)!
+//
+//  public let version = Version(
+//    bundle: bundle,
+//    dictionary: sbd,
+//    versionControl: vcs
+//  )
 }

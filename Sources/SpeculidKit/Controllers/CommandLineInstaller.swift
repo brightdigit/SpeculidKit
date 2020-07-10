@@ -41,7 +41,7 @@ public struct CommandLineInstaller {
           SMJobRemove(kSMDomainSystemLaunchd, "com.brightdigit.Speculid-Mac-Installer" as CFString, authorizationRef, true, &cfError)
           completed(error)
         }
-      case let .error(error):
+      case let .failure(error):
         debugPrint(error)
         completed(nil)
       }

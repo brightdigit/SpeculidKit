@@ -1,4 +1,5 @@
 import Foundation
+import AssetLib
 
 @objc open class AssetCatalogItemSize: NSObject, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true
@@ -24,14 +25,14 @@ import Foundation
   public let width: NSNumber
   public let height: NSNumber
 
-  public init(size: CGSize) {
+  public init(size: Size) {
     width = size.width as NSNumber
     height = size.height as NSNumber
   }
 }
 
 extension AssetCatalogItemSize {
-  var cgSize: CGSize {
-    CGSize(width: width.cgFloatValue, height: height.cgFloatValue)
+  var cgSize: Size {
+    Size(width: width.floatValue, height: height.floatValue)
   }
 }

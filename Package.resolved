@@ -6,17 +6,8 @@
         "repositoryURL": "https://github.com/apple/swift-argument-parser",
         "state": {
           "branch": null,
-          "revision": "8d31a0905c346a45c87773ad50862b5b3df8dff6",
-          "version": "0.0.4"
-        }
-      },
-      {
-        "package": "SwiftDraw",
-        "repositoryURL": "https://github.com/swhitty/SwiftDraw.git",
-        "state": {
-          "branch": null,
-          "revision": "dc3bf2c1212c46d4c3d0602ed1e519d07d403cfa",
-          "version": "0.7.0"
+          "revision": "eb51f949cdd0c9d88abba9ce79d37eb7ea1231d0",
+          "version": "0.2.0"
         }
       }
     ]

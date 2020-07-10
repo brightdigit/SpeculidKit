@@ -1,5 +1,5 @@
-import CairoSVG
 import Cocoa
+import CairoSVG
 
 @objc open class ImageSpecification: NSObject, ImageSpecificationProtocol, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true
@@ -20,7 +20,7 @@ import Cocoa
     let backgroundColor = aDecoder.decodeObject(forKey: "backgroundColor") as? CairoColorProtocol
     let _removeAlphaChannel = aDecoder.decodeObject(forKey: "removeAlphaChannel") as? Bool
 
-    guard let file = _file, let dimensionValue = _dimensionValue, let value = _value, let removeAlphaChannel = _removeAlphaChannel, let dimension = CairoSVG.Dimension(rawValue: dimensionValue) else {
+    guard let file = _file, let dimensionValue = _dimensionValue, let value = _value, let removeAlphaChannel = _removeAlphaChannel, let dimension = Dimension(rawValue: dimensionValue) else {
       return nil
     }
 

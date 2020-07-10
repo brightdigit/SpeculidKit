@@ -6,6 +6,7 @@
 //
 //
 import Foundation
+import AssetLib
 
 public protocol AssetSpecificationProtocol {
   var idiom: ImageIdiom { get }

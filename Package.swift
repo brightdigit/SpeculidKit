@@ -12,9 +12,9 @@ let package = Package(
     // Products define the executables and libraries produced by a package, and make them visible to other packages.
     .library(
       name: "SpeculidKit",
-      targets: ["SpeculidKit", "CairoSVG"]
+      targets: ["SpeculidKit"]
     ),
-    .executable(name: "spcld", targets: ["SpeculidKit.Command", "CairoSVG"])
+    .executable(name: "spcld", targets: ["SpeculidKit.Command"])
     
   ],
   dependencies: [
@@ -23,6 +23,7 @@ let package = Package(
     .package(path: "./packages/AssetLib"),
     .package(path: "./packages/GampKit"),
     .package(path: "./packages/SwiftDraw"),
+    .package(path: "./packages/CairoSVG"),
     .package(url: "https://github.com/apple/swift-argument-parser", from: "0.2.0"),
   ],
   targets: [
@@ -30,18 +31,12 @@ let package = Package(
     // Targets can depend on other targets in this package, and on products in packages which this package depends on.
     .target(
       name: "SpeculidKit",
-      dependencies: ["AssetLib", "GampKit", "SwiftDraw"]
+      dependencies: ["AssetLib", "GampKit", "SwiftDraw", "CairoSVG"]
     ),
     .target(
       name: "SpeculidKit.Command",
       dependencies: ["SpeculidKit",
                      .product(name: "ArgumentParser", package: "swift-argument-parser")]
-    ),
-    .binaryTarget(
-        name: "CairoSVG",
-        path: "packages/CairoSVG/build/CairoSVG.xcframework"
-        //url: "https://github.com/brightdigit/CairoSVG/releases/download/0.1.0-alpha.1/CairoSVG.xcframework.zip",
-        //checksum: "3a1f7ba992691e7c4b191c79f8e8cb4318d61811fc47dd0e09314c321fac023a"
     ),
     .testTarget(
       name: "SpeculidKitTests",

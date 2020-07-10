@@ -1,7 +1,7 @@
 import Foundation
-import SwiftVer
+import GampKit
 
-public protocol ApplicationProtocol: VersionProvider {
+public protocol ApplicationProtocol {//: VersionProvider {
   func documents(url: URL) throws -> [SpeculidDocumentProtocol]
   var builder: SpeculidBuilderProtocol! { get }
   var service: ServiceProtocol! { get }
@@ -9,5 +9,5 @@ public protocol ApplicationProtocol: VersionProvider {
   var regularExpressions: RegularExpressionSetProtocol! { get }
   var tracker: AnalyticsTrackerProtocol! { get }
   func quit(_ sender: Any?)
-  func withInstaller(_ completed: (Result<InstallerProtocol>) -> Void)
+  func withInstaller(_ completed: (Result<InstallerProtocol, Error>) -> Void)
 }

@@ -1,4 +1,5 @@
 import Foundation
+import AssetLib
 
 public struct SpeculidDocument: SpeculidDocumentProtocol {
   public let url: URL

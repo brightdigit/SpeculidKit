@@ -1,7 +1,9 @@
 import Foundation
+import GampKit
+import AssetLib
 
 // TODO: Separate into Files
-public typealias ImageConversionPair = (image: AssetSpecificationProtocol, conversion: Result<ImageConversionTaskProtocol>?)
+public typealias ImageConversionPair = (image: AssetSpecificationProtocol, conversion: Result<ImageConversionTaskProtocol, Error>?)
 public typealias ImageConversionDictionary = [String: ImageConversionPair]
 
 public extension SpeculidDocumentProtocol {

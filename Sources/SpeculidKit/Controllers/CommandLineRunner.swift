@@ -11,15 +11,15 @@ public struct UnknownArgumentsError: Error {
 public class CommandLineRunner: CommandLineRunnerProtocol {
   public var errorStream: TextOutputStream
   public var outputStream: TextOutputStream
-  private let _versionProvider: VersionProvider?
+  //private let _versionProvider: VersionProvider?
 
-  public var versionProvider: VersionProvider {
-    _versionProvider ?? Application.current
-  }
-  public init(outputStream: TextOutputStream, errorStream: TextOutputStream, versionProvider: VersionProvider? = nil) {
+//  public var versionProvider: VersionProvider {
+//    _versionProvider ?? Application.current
+//  }
+  public init(outputStream: TextOutputStream, errorStream: TextOutputStream) {
     self.outputStream = outputStream
     self.errorStream = errorStream
-    _versionProvider = versionProvider
+    //_versionProvider = versionProvider
   }
 
   public func activity(withArguments arguments: SpeculidCommandArgumentSet, _ completed: @escaping (CommandLineActivityProtocol, Error?) -> Void) -> CommandLineActivityProtocol {
@@ -35,11 +35,11 @@ public class CommandLineRunner: CommandLineRunnerProtocol {
         error = UnknownArgumentsError(arguments: arguments)
         return completed()
       case .version:
-        if let version = self.versionProvider.version {
-          self.outputStream.write(version.developmentDescription)
-        } else {
+//        if let version = self.versionProvider.version {
+//          self.outputStream.write(version.developmentDescription)
+//        } else {
           self.outputStream.write("\(Application.bundle.infoDictionary?["CFBundleShortVersionString"]) (\(Application.bundle.infoDictionary?["CFBundleVersion"]))")
-        }
+        //}
         #if DEBUG
           self.outputStream.write(" DEBUG")
         #endif

@@ -1,22 +1,34 @@
 import AppKit
 import Foundation
+import CairoSVG
 
-public enum Dimension {
+public enum GeometryType {
   case width
   case height
   case scale
   case unspecified
 }
 
-public struct GeometryDimension {
+public extension GeometryType {
+  var dimensionValue : CairoSVG.Dimension {
+    switch self {
+    case .width: return .width
+    case .height: return .height
+    case .scale: return .scale
+    case .unspecified: return .unspecified
+    }
+  }
+}
+
+public struct Geometry {
   public let value : Float
-  public let dimension : Dimension
+  public let dimension : GeometryType
 }
 
 public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Codable {
   public let assetDirectoryRelativePath: String
   public let sourceImageRelativePath: String
-  public let geometry: GeometryDimension?
+  public let geometry: Geometry?
   public let background: NSColor?
   public let removeAlpha: Bool
 
@@ -27,6 +39,14 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
     case background
     case removeAlpha = "remove-alpha"
   }
+  
+  public init () {
+    self.assetDirectoryRelativePath = ""
+    self.sourceImageRelativePath = ""
+    self.removeAlpha = false
+    self.geometry = nil
+    self.background = nil
+  }
 
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -34,10 +54,10 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
     sourceImageRelativePath = try container.decode(String.self, forKey: CodingKeys.sourceImageRelativePath)
     removeAlpha = try container.decodeIfPresent(Bool.self, forKey: CodingKeys.removeAlpha) ?? false
 
-    let geometry: GeometryDimension?
+    let geometry: Geometry?
 
     if let geometryString = try container.decodeIfPresent(String.self, forKey: CodingKeys.geometry) {
-      geometry = try GeometryDimension(string: geometryString)
+      geometry = try Geometry(string: geometryString)
     } else {
       geometry = nil
     }

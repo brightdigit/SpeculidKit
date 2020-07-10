@@ -9,13 +9,13 @@ import Foundation
 
 public struct ClientIdentifier: ClientIdentifierDelegate {
   public static let shared = ClientIdentifier()
-  public let clientIdentifier: String
+  public let clientIdentifier: UUID
 
-  public static func calculateIdentifier() -> String {
-    guard let clientIdentifier = UserDefaults.standard.string(forKey: "clientIdentifier") else {
+  public static func calculateIdentifier() -> UUID {
+    guard let clientIdentifier = UserDefaults.standard.string(forKey: "clientIdentifier").flatMap(UUID.init(uuidString:)) else {
       let uuid = UUID()
       UserDefaults.standard.set(uuid.uuidString, forKey: "clientIdentifier")
-      return uuid.uuidString
+      return uuid
     }
 
     return clientIdentifier

@@ -1,5 +1,7 @@
 import AppKit
 import Foundation
+import CairoSVG
+
 /**
  MissingHashMarkAsPrefix:   "Invalid RGB string, missing '#' as prefix"
  UnableToScanHexValue:      "Scan hex error"
@@ -136,7 +138,7 @@ extension NSColor {
   // swiftlint:enable identifier_name
 }
 
-extension NSColor {
+extension NSColor : CairoColorProtocol {
   public var red: Double {
     Double(redComponent)
   }

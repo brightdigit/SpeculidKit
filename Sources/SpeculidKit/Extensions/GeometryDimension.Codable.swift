@@ -1,11 +1,10 @@
-public struct Size {
-  public let width : Float
-  public let height : Float
-}
-extension GeometryDimension: Codable {
-  internal static func parse(string: String) -> (dimension: Dimension, value: Float)? {
+import AssetLib
+import CairoSVG
+
+extension Geometry: Codable {
+  internal static func parse(string: String) -> (dimension: GeometryType, value: Float)? {
     let value: Double
-    let dimension: Dimension
+    let dimension: GeometryType
     if let width = Double(string) {
       value = width
       dimension = .width
@@ -28,7 +27,7 @@ extension GeometryDimension: Codable {
   }
 
   public init?(string: String) {
-    guard let geometryDimension = GeometryDimension.parse(string: string) else {
+    guard let geometryDimension = Geometry.parse(string: string) else {
       return nil
     }
     self.init(value: geometryDimension.value, dimension: geometryDimension.dimension)
@@ -49,7 +48,7 @@ extension GeometryDimension: Codable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
     let stringValue = try container.decode(String.self)
-    guard let geometryDimension = GeometryDimension.parse(string: stringValue) else {
+    guard let geometryDimension = Geometry.parse(string: stringValue) else {
       throw BadGeometryStringValueError(stringValue: stringValue)
     }
     self.init(value: geometryDimension.value, dimension: geometryDimension.dimension)
@@ -58,5 +57,13 @@ extension GeometryDimension: Codable {
   public func encode(to encoder: Encoder) throws {
     var container = encoder.singleValueContainer()
     try container.encode(value.description)
+  }
+}
+
+
+
+extension GeometryDimension {
+  init (geometry: Geometry) {
+    self.init(value: CGFloat(geometry.value), dimension: geometry.dimension.dimensionValue)
   }
 }

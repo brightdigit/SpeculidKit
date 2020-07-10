@@ -3,7 +3,7 @@ import Foundation
 public struct NoServiceReturnedError: Error {}
 
 public struct RemoteObjectInterfaceProvider: RemoteObjectInterfaceProviderProtocol {
-  public func remoteObjectProxyWithHandler(_ handler: (Result<ServiceProtocol>) -> Void) {
+  public func remoteObjectProxyWithHandler(_ handler: (Result<ServiceProtocol, Error>) -> Void) {
     let interface = NSXPCInterface(with: ServiceProtocol.self)
     let connection = NSXPCConnection(serviceName: "com.brightdigit.Speculid-Mac-XPC")
 
@@ -16,14 +16,14 @@ public struct RemoteObjectInterfaceProvider: RemoteObjectInterfaceProviderProtoc
       error = handlerError
     }
 
-    let result: Result<ServiceProtocol>
+    let result: Result<ServiceProtocol, Error>
 
     if let error = error {
-      result = .error(error)
+      result = .failure(error)
     } else if let service = proxy as? ServiceProtocol {
       result = .success(service)
     } else {
-      result = .error(NoServiceReturnedError())
+      result = .failure(NoServiceReturnedError())
     }
 
     handler(result)
@@ -31,7 +31,7 @@ public struct RemoteObjectInterfaceProvider: RemoteObjectInterfaceProviderProtoc
 }
 
 public struct InstallerObjectInterfaceProvider: InstallerObjectInterfaceProviderProtocol {
-  public func remoteObjectProxyWithHandler(_ handler: (Result<InstallerProtocol>) -> Void) {
+  public func remoteObjectProxyWithHandler(_ handler: (Result<InstallerProtocol, Error>) -> Void) {
     let interface = NSXPCInterface(with: InstallerProtocol.self)
     let connection =
       NSXPCConnection(machServiceName: "com.brightdigit.Speculid-Mac-Installer", options: .privileged)
@@ -45,14 +45,14 @@ public struct InstallerObjectInterfaceProvider: InstallerObjectInterfaceProvider
       error = handlerError
     }
 
-    let result: Result<InstallerProtocol>
+    let result: Result<InstallerProtocol, Error>
 
     if let error = error {
-      result = .error(error)
+      result = .failure(error)
     } else if let service = proxy as? InstallerProtocol {
       result = .success(service)
     } else {
-      result = .error(NoServiceReturnedError())
+      result = .failure(NoServiceReturnedError())
     }
 
     handler(result)
