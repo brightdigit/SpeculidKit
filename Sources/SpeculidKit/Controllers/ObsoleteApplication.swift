@@ -2,6 +2,7 @@ import AppKit
 import Foundation
 import GampKit
 
+@available(*, deprecated)
 extension OperatingSystemVersion {
   var fullDescription: String {
     [majorVersion, minorVersion, patchVersion].map {
@@ -9,9 +10,9 @@ extension OperatingSystemVersion {
     }.joined(separator: ".")
   }
 }
-
+@available(*, deprecated)
 var exceptionHandler: ((NSException) -> Void)?
-
+@available(*, deprecated)
 func exceptionHandlerMethod(exception: NSException) {
   if let handler = exceptionHandler {
     handler(exception)
@@ -19,7 +20,9 @@ func exceptionHandlerMethod(exception: NSException) {
 }
 
 public typealias RegularExpressionArgumentSet = (String, options: NSRegularExpression.Options)
-open class Application: NSApplication, ApplicationProtocol {
+
+@available(*, deprecated)
+open class ObsoleteApplication: NSApplication, ApplicationProtocol {
   public func withInstaller(_ completed: (Result<InstallerProtocol, Error>) -> Void) {
     installerObjectInterfaceProvider.remoteObjectProxyWithHandler(completed)
   }
@@ -53,7 +56,7 @@ open class Application: NSApplication, ApplicationProtocol {
   }
 
   public static let helpText: String! = {
-    guard let url = Application.bundle.url(forResource: "help", withExtension: "txt") else {
+    guard let url = ObsoleteApplication.bundle.url(forResource: "help", withExtension: "txt") else {
       return nil
     }
 
@@ -203,7 +206,7 @@ open class Application: NSApplication, ApplicationProtocol {
     bundle.bundleIdentifier!.components(separatedBy: "-").first!
   }
 
-  public static let bundle = Bundle(for: Application.self)
+  public static let bundle = Bundle(for: ObsoleteApplication.self)
 //
 //  public static let vcs = VersionControlInfo(jsonResource: "autorevision", fromBundle: Application.bundle)
 //

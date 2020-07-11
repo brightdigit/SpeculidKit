@@ -55,7 +55,7 @@ public struct SpeculidBuilder: SpeculidBuilderProtocol {
     } catch {
       return callback(error)
     }
-    Application.current.service.exportImageAtURL(document.sourceImageURL, toSpecifications: imageSpecifications) {
+    ObsoleteApplication.current.service.exportImageAtURL(document.sourceImageURL, toSpecifications: imageSpecifications) {
       error in
       if let error = error {
         callback(error)
@@ -73,7 +73,7 @@ public struct SpeculidBuilder: SpeculidBuilderProtocol {
       let items = destinationFileNames.map(
         AssetCatalogItem.init
       )
-      Application.current.service.updateAssetCatalogAtURL(document.assetFile.url, withItems: items, callback)
+//      Application.current.service.updateAssetCatalogAtURL(document.assetFile.url, withItems: items, callback)
     }
   }
 }

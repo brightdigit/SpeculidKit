@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated)
 public struct SpeculidApplicationModeParser: SpeculidApplicationModeParserProtocol {
   public func parseMode(fromCommandLine commandLine: CommandLineArgumentProviderProtocol) -> SpeculidApplicationMode {
     var indicies = [Int]()

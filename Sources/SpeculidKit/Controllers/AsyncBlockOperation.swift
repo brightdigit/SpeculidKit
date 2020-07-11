@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated)
 open class AsyncBlockOperation: Operation {
   typealias Block = (() -> Void) -> Void
 

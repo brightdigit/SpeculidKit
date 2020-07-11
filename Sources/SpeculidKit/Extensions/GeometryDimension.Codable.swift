@@ -3,6 +3,7 @@ import CairoSVG
 
 extension Geometry: Codable {
   internal static func parse(string: String) -> (dimension: GeometryType, value: Float)? {
+
     let value: Double
     let dimension: GeometryType
     if let width = Double(string) {

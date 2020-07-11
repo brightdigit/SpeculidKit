@@ -12,6 +12,6 @@ public class QuitMenuItem: NSMenuItem {
 
   @objc public func exit(_ sender: QuitMenuItem) {
     precondition(sender == self)
-    Application.current.quit(self)
+    ObsoleteApplication.current.quit(self)
   }
 }

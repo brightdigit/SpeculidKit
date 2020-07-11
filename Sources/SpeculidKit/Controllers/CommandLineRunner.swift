@@ -3,11 +3,13 @@ import Foundation
 public struct InvalidDocumentURL: Error {
   public let url: URL
 }
+
 extension Operation: CommandLineActivityProtocol {}
 
 public struct UnknownArgumentsError: Error {
   public let arguments: [String]
 }
+@available(*, deprecated)
 public class CommandLineRunner: CommandLineRunnerProtocol {
   public var errorStream: TextOutputStream
   public var outputStream: TextOutputStream
@@ -27,18 +29,18 @@ public class CommandLineRunner: CommandLineRunnerProtocol {
     let operation = AsyncBlockOperation { completed in
       switch arguments {
       case .help:
-        self.outputStream.write(Application.helpText)
+        self.outputStream.write(ObsoleteApplication.helpText)
         return completed()
       case let .unknown(arguments):
-        self.errorStream.write(Application.unknownCommandMessage(fromArguments: arguments))
-        self.outputStream.write(Application.helpText)
+        self.errorStream.write(ObsoleteApplication.unknownCommandMessage(fromArguments: arguments))
+        self.outputStream.write(ObsoleteApplication.helpText)
         error = UnknownArgumentsError(arguments: arguments)
         return completed()
       case .version:
 //        if let version = self.versionProvider.version {
 //          self.outputStream.write(version.developmentDescription)
 //        } else {
-          self.outputStream.write("\(Application.bundle.infoDictionary?["CFBundleShortVersionString"]) (\(Application.bundle.infoDictionary?["CFBundleVersion"]))")
+          self.outputStream.write("\(ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"]) (\(ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"]))")
         //}
         #if DEBUG
           self.outputStream.write(" DEBUG")
@@ -47,7 +49,7 @@ public class CommandLineRunner: CommandLineRunnerProtocol {
       case let .process(url, update):
         let documents: [SpeculidDocumentProtocol]
         do {
-          documents = try Application.current.documents(url: url)
+          documents = try ObsoleteApplication.current.documents(url: url)
         } catch let caughtError {
           error = caughtError
           return completed()
@@ -56,7 +58,7 @@ public class CommandLineRunner: CommandLineRunnerProtocol {
 //          error = InvalidDocumentURL(url: url)
 //          return completed()
 //        }
-        error = Application.current.builder.build(documents: documents)
+        error = ObsoleteApplication.current.builder.build(documents: documents)
         return completed()
       case .debugLocation:
         self.outputStream.write(Bundle.main.bundleURL.absoluteString)

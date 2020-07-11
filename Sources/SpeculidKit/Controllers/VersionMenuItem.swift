@@ -8,7 +8,7 @@ import Cocoa
 
 public class VersionMenuItem: NSMenuItem {
   public static func buildNumbers(fromResource resource: String?, withExtension extension: String?) -> Set<Int>? {
-    if let url = Application.bundle.url(forResource: resource, withExtension: `extension`) {
+    if let url = ObsoleteApplication.bundle.url(forResource: resource, withExtension: `extension`) {
       if let text = try? String(contentsOf: url) {
         return Set(text.components(separatedBy: CharacterSet.newlines).compactMap { Int($0.trimmingCharacters(in: .whitespacesAndNewlines)) })
       }
@@ -22,7 +22,7 @@ public class VersionMenuItem: NSMenuItem {
 //    if let version = Application.current.version, Application.vcs != nil {
 //      title = version.developmentDescription
 //    } else {
-      title = "\(String(describing: Application.bundle.infoDictionary?["CFBundleShortVersionString"])) (\(String(describing: Application.bundle.infoDictionary?["CFBundleVersion"])))"
+      title = "\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"])) (\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"])))"
     //}
     super.init(title: title, action: nil, keyEquivalent: "")
   }

@@ -30,7 +30,7 @@ public struct CommandLineInstaller {
       completed(cfError?.takeRetainedValue())
       return
     }
-    Application.current.withInstaller {
+    ObsoleteApplication.current.withInstaller {
       result in
 
       switch result {
