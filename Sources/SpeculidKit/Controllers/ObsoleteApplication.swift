@@ -154,7 +154,7 @@ open class ObsoleteApplication: NSApplication, ApplicationProtocol {
     }
 
     
-    builder = SpeculidBuilder(tracker: self.tracker, configuration: configuration, imageSpecificationBuilder: imageSpecificationBuilder)
+    builder = SpeculidBuilder(configuration: configuration, imageSpecificationBuilder: imageSpecificationBuilder, tracker: self.tracker)
     let tracker = AnalyticsTracker(configuration: analyticsConfiguration, sessionManager: AnalyticsSessionManager(session: AnalyticsURLSession()))
     NSSetUncaughtExceptionHandler(exceptionHandlerMethod)
 

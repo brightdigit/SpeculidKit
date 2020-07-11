@@ -13,6 +13,7 @@ import CairoSVG
 //  }
 //}
 public struct SpeculidImageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol {
+  public init () {}
   public func imageSpecification(
     forURL destinationURL: URL,
     withSpecifications specifications: SpeculidSpecificationsFileProtocol,

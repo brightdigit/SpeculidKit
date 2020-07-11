@@ -40,6 +40,12 @@ public struct SpeculidBuilder: SpeculidBuilderProtocol {
   public let tracker: AnalyticsTrackerProtocol?
   public let configuration: SpeculidConfigurationProtocol
   public let imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol
+  
+  public init (configuration: SpeculidConfigurationProtocol, imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol, tracker: AnalyticsTrackerProtocol? = nil) {
+    self.configuration = configuration
+    self.imageSpecificationBuilder = imageSpecificationBuilder
+    self.tracker = tracker
+  }
 
   public func build(document: SpeculidDocumentProtocol, callback: @escaping ((Error?) -> Void)) {
     let imageSpecifications: [ImageSpecification]
