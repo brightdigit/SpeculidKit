@@ -143,15 +143,24 @@ extension NSColor {
 
 extension NSColor : CairoColorProtocol {
   public var red: Double {
-    Double(redComponent)
+    guard let rgbColor = usingColorSpaceName(NSColorSpaceName.calibratedRGB) else {
+      return 1.0
+    }
+    return Double(rgbColor.redComponent)
   }
 
   public var green: Double {
-    Double(greenComponent)
+    guard let rgbColor = usingColorSpaceName(NSColorSpaceName.calibratedRGB) else {
+      return 1.0
+    }
+    return Double(rgbColor.greenComponent)
   }
 
   public var blue: Double {
-    Double(blueComponent)
+    guard let rgbColor = usingColorSpaceName(NSColorSpaceName.calibratedRGB) else {
+      return 1.0
+    }
+    return Double(rgbColor.blueComponent)
   }
 }
 

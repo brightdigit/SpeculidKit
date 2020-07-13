@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 struct NoBookmarkAvailableError : Error {
-  
+  let url : URL
 }
 
 
@@ -27,7 +27,7 @@ public struct FileManagement {
    
    public func saveBookmark(_ url: URL) throws {
      
-     let newData =  try url.bookmarkData()
+     let newData =  try url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
      var bookmarkMap = defaults.dictionary(forKey: "bookmarks") as? [String : Data] ?? [String : Data]()
      bookmarkMap[url.path] = newData
      defaults.set(bookmarkMap, forKey: "bookmarks")
@@ -46,7 +46,7 @@ public struct FileManagement {
      if isStale {
        try saveBookmark(url)
      }
-     fromURLResult = fromURLCurrentResult ?? .failure(NoBookmarkAvailableError())
+    fromURLResult = fromURLCurrentResult ?? .failure(NoBookmarkAvailableError(url : url))
      return try fromURLResult.get()
    }
    

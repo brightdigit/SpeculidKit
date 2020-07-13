@@ -21,14 +21,20 @@ public struct SpeculidDocument: SpeculidDocumentProtocol {
   }
   
   
-  public init(sandboxedFromUrl url: URL, decoder: JSONDecoder) throws {
-    let specificationsFileData = try Data(contentsOf: url)
-    let specificationsFile = try decoder.decode(SpeculidSpecificationsFile.self, from: specificationsFileData)
+  public init(sandboxedFromFile specificationsFile: SpeculidSpecificationsFileProtocol, withURL url: URL, decoder: JSONDecoder, withManager manager: FileManagement) throws {
+//    let sourceURL = try manager.bookmarkURL(fromURL: url)
+//    let specificationsFileData = try Data(contentsOf: sourceURL)
+//    let specificationsFile = try decoder.decode(SpeculidSpecificationsFile.self, from: specificationsFileData)
 
-    let contentsJSONURL = url.deletingLastPathComponent().appendingPathComponent(specificationsFile.assetDirectoryRelativePath, isDirectory: true).appendingPathComponent("Contents.json")
+    let contentsAbsJSONURL = url.deletingLastPathComponent().appendingPathComponent(specificationsFile.assetDirectoryRelativePath).appendingPathComponent("Contents.json")
 
-    
+    let contentsDirURL = try manager.bookmarkURL(fromURL: contentsAbsJSONURL)
+    if !contentsDirURL.startAccessingSecurityScopedResource() {
+        print("startAccessingSecurityScopedResource returned false. This directory might not need it, or this URL might not be a security scoped URL, or maybe something's wrong?")
+    }
+    let contentsJSONURL = contentsDirURL
     let assetData = try Data(contentsOf: contentsJSONURL)
+    contentsJSONURL.stopAccessingSecurityScopedResource()
     let asset = try decoder.decode(AssetSpecificationDocument.self, from: assetData)
 
     self.specificationsFile = specificationsFile
