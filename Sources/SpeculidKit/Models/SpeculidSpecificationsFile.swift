@@ -47,6 +47,15 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
     self.geometry = nil
     self.background = nil
   }
+  
+  
+  public init (source: SpeculidSpecificationsFileProtocol) {
+    self.assetDirectoryRelativePath = source.assetDirectoryRelativePath
+    self.sourceImageRelativePath = source.sourceImageRelativePath
+    self.geometry = source.geometry
+    self.background = source.background
+    self.removeAlpha = source.removeAlpha
+  }
 
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
