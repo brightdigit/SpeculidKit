@@ -40,7 +40,7 @@ public struct FileManagement {
      let fromURLCurrentResult = bookmarks?[url.path].map{
        data in
        Result{
-         try URL.init(resolvingBookmarkData: data, bookmarkDataIsStale: &isStale)
+        try URL(resolvingBookmarkData: data, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
        }
      }
      if isStale {

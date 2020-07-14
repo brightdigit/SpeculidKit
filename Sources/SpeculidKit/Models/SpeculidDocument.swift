@@ -29,12 +29,15 @@ public struct SpeculidDocument: SpeculidDocumentProtocol {
     let contentsAbsJSONURL = url.deletingLastPathComponent().appendingPathComponent(specificationsFile.assetDirectoryRelativePath).appendingPathComponent("Contents.json")
 
     let contentsDirURL = try manager.bookmarkURL(fromURL: contentsAbsJSONURL)
-    if !contentsDirURL.startAccessingSecurityScopedResource() {
+    let accessingScoped = contentsDirURL.startAccessingSecurityScopedResource()
+    if !accessingScoped {
         print("startAccessingSecurityScopedResource returned false. This directory might not need it, or this URL might not be a security scoped URL, or maybe something's wrong?")
     }
     let contentsJSONURL = contentsDirURL
     let assetData = try Data(contentsOf: contentsJSONURL)
+    if accessingScoped {
     contentsJSONURL.stopAccessingSecurityScopedResource()
+    }
     let asset = try decoder.decode(AssetSpecificationDocument.self, from: assetData)
 
     self.specificationsFile = specificationsFile
