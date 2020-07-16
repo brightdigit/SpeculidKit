@@ -13,6 +13,7 @@ struct NoBookmarkAvailableError : Error {
 }
 
 
+@available(*, deprecated)
 public struct FileManagement {
   let defaults: UserDefaults! = UserDefaults(suiteName: "MLT7M394S7.group.com.brightdigit.Speculid")
    
