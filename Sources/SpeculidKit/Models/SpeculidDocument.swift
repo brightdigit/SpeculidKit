@@ -1,6 +1,10 @@
 import Foundation
 import AssetLib
 
+public protocol Sandbox {
+  func bookmarkURL(fromURL url: URL) throws -> URL
+}
+
 public struct SpeculidDocument: SpeculidDocumentProtocol {
   public let url: URL
   public let specificationsFile: SpeculidSpecificationsFileProtocol
@@ -21,7 +25,7 @@ public struct SpeculidDocument: SpeculidDocumentProtocol {
   }
   
   
-  public init(sandboxedFromFile specificationsFile: SpeculidSpecificationsFileProtocol, withURL url: URL, decoder: JSONDecoder, withManager manager: FileManagement) throws {
+  public init(sandboxedFromFile specificationsFile: SpeculidSpecificationsFileProtocol, withURL url: URL, decoder: JSONDecoder, withManager manager: Sandbox) throws {
 //    let sourceURL = try manager.bookmarkURL(fromURL: url)
 //    let specificationsFileData = try Data(contentsOf: sourceURL)
 //    let specificationsFile = try decoder.decode(SpeculidSpecificationsFile.self, from: specificationsFileData)

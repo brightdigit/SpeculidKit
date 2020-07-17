@@ -8,8 +8,12 @@
 import Foundation
 import AppKit
 
-struct NoBookmarkAvailableError : Error {
-  let url : URL
+public struct NoBookmarkAvailableError : Error {
+  public let url : URL
+  
+  public init (url : URL) {
+    self.url = url
+  }
 }
 
 

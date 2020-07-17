@@ -23,6 +23,11 @@ public extension GeometryType {
 public struct Geometry {
   public let value : Float
   public let dimension : GeometryType
+  
+  public init (value: Float, dimension: GeometryType) {
+    self.dimension = dimension
+    self.value = value
+  }
 }
 
 public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Codable {
