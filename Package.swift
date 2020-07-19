@@ -23,7 +23,7 @@ let package = Package(
     .package(path: "./packages/AssetLib"),
     .package(path: "./packages/GampKit"),
     .package(path: "./packages/SwiftDraw"),
-    .package(path: "./packages/CairoSVG"),
+    .package(url: "https://github.com/BrightDigit/CairoSVG", from: "0.1.4"),
     .package(url: "https://github.com/apple/swift-argument-parser", from: "0.2.0"),
   ],
   targets: [

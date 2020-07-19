@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CairoSVG",
+        "repositoryURL": "https://github.com/BrightDigit/CairoSVG",
+        "state": {
+          "branch": null,
+          "revision": "3fe765093806b912a37b5e16a3a5aeeb1e7ee962",
+          "version": "0.1.4"
+        }
+      },
+      {
         "package": "swift-argument-parser",
         "repositoryURL": "https://github.com/apple/swift-argument-parser",
         "state": {
