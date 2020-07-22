@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Set Xcode Name
       run: echo "::set-env name=XCODE_NAME::$(basename -- ${{ env.XCODE_PATH }} | sed 's/\.[^.]*$//' | cut -d'_' -f2)"
     - name: Setup Xcode
