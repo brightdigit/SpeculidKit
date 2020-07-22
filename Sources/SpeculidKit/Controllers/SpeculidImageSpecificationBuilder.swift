@@ -1,9 +1,9 @@
-import Foundation
 import AssetLib
 import CairoSVG
+import Foundation
 
-//@available(*, deprecated: 2.0.0)
-//public struct NoGeometrySpecifiedError: Error {
+// @available(*, deprecated: 2.0.0)
+// public struct NoGeometrySpecifiedError: Error {
 //  public let asset: AssetSpecificationProtocol
 //  public let specification: SpeculidSpecificationsFileProtocol
 //
@@ -11,9 +11,9 @@ import CairoSVG
 //    self.asset = asset
 //    self.specification = specification
 //  }
-//}
+// }
 public struct SpeculidImageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol {
-  public init () {}
+  public init() {}
   public func imageSpecification(
     forURL destinationURL: URL,
     withSpecifications specifications: SpeculidSpecificationsFileProtocol,
@@ -22,7 +22,7 @@ public struct SpeculidImageSpecificationBuilder: SpeculidImageSpecificationBuild
     let destinationFile = try ImageFile(url: destinationURL)
 
     let geometry: Geometry?
-    
+
     if let size = asset.size {
       geometry = try Geometry(size: size, preferWidth: true).scalingBy(asset.scale ?? 1.0)
     } else if let specificationsGeomtetry = specifications.geometry {
@@ -32,13 +32,14 @@ public struct SpeculidImageSpecificationBuilder: SpeculidImageSpecificationBuild
     } else {
       geometry = nil
     }
-    
+
     let geometryDimension = geometry.map(GeometryDimension.init(geometry:))
 
     return ImageSpecification(
       file: destinationFile,
       geometryDimension: geometryDimension,
       removeAlphaChannel: specifications.removeAlpha,
-      backgroundColor: specifications.background)
+      backgroundColor: specifications.background
+    )
   }
 }

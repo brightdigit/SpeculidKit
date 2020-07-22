@@ -1,5 +1,5 @@
-import Foundation
 import AssetLib
+import Foundation
 
 public protocol SpeculidDocumentProtocol {
   var url: URL { get }

@@ -1,5 +1,5 @@
-import Foundation
 import AssetLib
+import Foundation
 
 public protocol Sandbox {
   func bookmarkURL(fromURL url: URL) throws -> URL
@@ -23,8 +23,7 @@ public struct SpeculidDocument: SpeculidDocumentProtocol {
     assetFile = AssetSpecificationFile(url: contentsJSONURL, document: asset)
     self.url = url
   }
-  
-  
+
   public init(sandboxedFromFile specificationsFile: SpeculidSpecificationsFileProtocol, withURL url: URL, decoder: JSONDecoder, withManager manager: Sandbox) throws {
 //    let sourceURL = try manager.bookmarkURL(fromURL: url)
 //    let specificationsFileData = try Data(contentsOf: sourceURL)
@@ -41,7 +40,7 @@ public struct SpeculidDocument: SpeculidDocumentProtocol {
     let jsonAccessingScoped = contentsJSONURL.startAccessingSecurityScopedResource()
     let assetData = try Data(contentsOf: contentsJSONURL)
     if jsonAccessingScoped {
-    contentsJSONURL.stopAccessingSecurityScopedResource()
+      contentsJSONURL.stopAccessingSecurityScopedResource()
     }
     if dirAccessingScoped {
       contentsDirURL.stopAccessingSecurityScopedResource()

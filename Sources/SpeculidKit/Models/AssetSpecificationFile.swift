@@ -1,5 +1,5 @@
-import Foundation
 import AssetLib
+import Foundation
 
 public struct AssetSpecificationFile: AssetSpecificationFileProtocol {
   public let url: URL

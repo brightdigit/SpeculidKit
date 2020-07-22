@@ -9,11 +9,12 @@ extension Operation: CommandLineActivityProtocol {}
 public struct UnknownArgumentsError: Error {
   public let arguments: [String]
 }
+
 @available(*, deprecated)
 public class CommandLineRunner: CommandLineRunnerProtocol {
   public var errorStream: TextOutputStream
   public var outputStream: TextOutputStream
-  //private let _versionProvider: VersionProvider?
+  // private let _versionProvider: VersionProvider?
 
 //  public var versionProvider: VersionProvider {
 //    _versionProvider ?? Application.current
@@ -21,7 +22,7 @@ public class CommandLineRunner: CommandLineRunnerProtocol {
   public init(outputStream: TextOutputStream, errorStream: TextOutputStream) {
     self.outputStream = outputStream
     self.errorStream = errorStream
-    //_versionProvider = versionProvider
+    // _versionProvider = versionProvider
   }
 
   public func activity(withArguments arguments: SpeculidCommandArgumentSet, _ completed: @escaping (CommandLineActivityProtocol, Error?) -> Void) -> CommandLineActivityProtocol {
@@ -40,8 +41,8 @@ public class CommandLineRunner: CommandLineRunnerProtocol {
 //        if let version = self.versionProvider.version {
 //          self.outputStream.write(version.developmentDescription)
 //        } else {
-          self.outputStream.write("\(ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"]) (\(ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"]))")
-        //}
+        self.outputStream.write("\(ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"]) (\(ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"]))")
+        // }
         #if DEBUG
           self.outputStream.write(" DEBUG")
         #endif

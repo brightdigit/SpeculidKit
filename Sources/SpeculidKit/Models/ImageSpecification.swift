@@ -1,5 +1,5 @@
-import Cocoa
 import CairoSVG
+import Cocoa
 
 @objc open class ImageSpecification: NSObject, ImageSpecificationProtocol, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true
@@ -30,6 +30,7 @@ import CairoSVG
     self.backgroundColor = backgroundColor
     self.removeAlphaChannel = removeAlphaChannel
   }
+
   // swiftlint:enable identifier_name
 
   public let file: ImageFileProtocol

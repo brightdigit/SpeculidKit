@@ -1,6 +1,6 @@
+import AssetLib
 import Foundation
 import GampKit
-import AssetLib
 
 // TODO: Separate into Files
 public typealias ImageConversionPair = (image: AssetSpecificationProtocol, conversion: Result<ImageConversionTaskProtocol, Error>?)
@@ -10,6 +10,7 @@ public extension SpeculidDocumentProtocol {
   var sourceImageURL: URL {
     url.deletingLastPathComponent().appendingPathComponent(specificationsFile.sourceImageRelativePath)
   }
+
   func destinationName(forImage image: AssetSpecificationProtocol) -> String {
     if let filename = image.filename {
       return filename
@@ -33,6 +34,7 @@ public extension SpeculidDocumentProtocol {
   func destinationURL(forFileName fileName: String) -> URL {
     url.deletingLastPathComponent().appendingPathComponent(specificationsFile.assetDirectoryRelativePath, isDirectory: true).appendingPathComponent(fileName)
   }
+
   // destinationFileNames
 }
 
@@ -40,8 +42,8 @@ public struct SpeculidBuilder: SpeculidBuilderProtocol {
   public let tracker: AnalyticsTrackerProtocol?
   public let configuration: SpeculidConfigurationProtocol
   public let imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol
-  
-  public init (configuration: SpeculidConfigurationProtocol, imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol, tracker: AnalyticsTrackerProtocol? = nil) {
+
+  public init(configuration: SpeculidConfigurationProtocol, imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol, tracker: AnalyticsTrackerProtocol? = nil) {
     self.configuration = configuration
     self.imageSpecificationBuilder = imageSpecificationBuilder
     self.tracker = tracker

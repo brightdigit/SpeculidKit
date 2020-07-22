@@ -1,6 +1,6 @@
 import AppKit
-import Foundation
 import CairoSVG
+import Foundation
 
 public enum GeometryType {
   case width
@@ -10,7 +10,7 @@ public enum GeometryType {
 }
 
 public extension GeometryType {
-  var dimensionValue : CairoSVG.Dimension {
+  var dimensionValue: CairoSVG.Dimension {
     switch self {
     case .width: return .width
     case .height: return .height
@@ -21,10 +21,10 @@ public extension GeometryType {
 }
 
 public struct Geometry {
-  public let value : Float
-  public let dimension : GeometryType
-  
-  public init (value: Float, dimension: GeometryType) {
+  public let value: Float
+  public let dimension: GeometryType
+
+  public init(value: Float, dimension: GeometryType) {
     self.dimension = dimension
     self.value = value
   }
@@ -44,22 +44,21 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
     case background
     case removeAlpha = "remove-alpha"
   }
-  
-  public init () {
-    self.assetDirectoryRelativePath = ""
-    self.sourceImageRelativePath = ""
-    self.removeAlpha = false
-    self.geometry = nil
-    self.background = nil
+
+  public init() {
+    assetDirectoryRelativePath = ""
+    sourceImageRelativePath = ""
+    removeAlpha = false
+    geometry = nil
+    background = nil
   }
-  
-  
-  public init (source: SpeculidSpecificationsFileProtocol) {
-    self.assetDirectoryRelativePath = source.assetDirectoryRelativePath
-    self.sourceImageRelativePath = source.sourceImageRelativePath
-    self.geometry = source.geometry
-    self.background = source.background
-    self.removeAlpha = source.removeAlpha
+
+  public init(source: SpeculidSpecificationsFileProtocol) {
+    assetDirectoryRelativePath = source.assetDirectoryRelativePath
+    sourceImageRelativePath = source.sourceImageRelativePath
+    geometry = source.geometry
+    background = source.background
+    removeAlpha = source.removeAlpha
   }
 
   public init(from decoder: Decoder) throws {
@@ -96,6 +95,7 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
     try container.encode(removeAlpha, forKey: CodingKeys.removeAlpha)
     try container.encode(background?.hexString(), forKey: CodingKeys.background)
   }
+
   //
   //  public init(assetSetRelativePath: String,
   //              sourceImageRelativePath: URL,

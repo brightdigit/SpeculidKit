@@ -1,10 +1,10 @@
 import Cocoa
 //
-//extension Version {
+// extension Version {
 //  public var buildHexidecimal: String {
 //    String(format: "%05x", build)
 //  }
-//}
+// }
 
 public class VersionMenuItem: NSMenuItem {
   public static func buildNumbers(fromResource resource: String?, withExtension extension: String?) -> Set<Int>? {
@@ -22,8 +22,8 @@ public class VersionMenuItem: NSMenuItem {
 //    if let version = Application.current.version, Application.vcs != nil {
 //      title = version.developmentDescription
 //    } else {
-      title = "\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"])) (\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"])))"
-    //}
+    title = "\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"])) (\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"])))"
+    // }
     super.init(title: title, action: nil, keyEquivalent: "")
   }
 

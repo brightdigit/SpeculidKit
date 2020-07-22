@@ -10,6 +10,7 @@ extension OperatingSystemVersion {
     }.joined(separator: ".")
   }
 }
+
 @available(*, deprecated)
 var exceptionHandler: ((NSException) -> Void)?
 @available(*, deprecated)
@@ -74,6 +75,7 @@ open class ObsoleteApplication: NSApplication, ApplicationProtocol {
 
     return text
   }()
+
   open private(set) var commandLineActivity: CommandLineActivityProtocol?
   open private(set) var statusItem: NSStatusItem?
   open private(set) var service: ServiceProtocol!
@@ -92,7 +94,7 @@ open class ObsoleteApplication: NSApplication, ApplicationProtocol {
   public let imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol
   open var commandLineRunner: CommandLineRunnerProtocol
 
-  public override init() {
+  override public init() {
     statusItemProvider = StatusItemProvider()
     remoteObjectInterfaceProvider = RemoteObjectInterfaceProvider()
     installerObjectInterfaceProvider = InstallerObjectInterfaceProvider()
@@ -124,7 +126,7 @@ open class ObsoleteApplication: NSApplication, ApplicationProtocol {
     super.init(coder: coder)
   }
 
-  open override func finishLaunching() {
+  override open func finishLaunching() {
     super.finishLaunching()
 
     configuration = configurationBuilder.configuration(fromCommandLine: CommandLineArgumentProvider())
@@ -134,8 +136,8 @@ open class ObsoleteApplication: NSApplication, ApplicationProtocol {
 //    if let version = self.version {
 //      applicationVersion = (try? version.fullDescription(withLocale: nil)) ?? ""
 //    } else {
-      applicationVersion = ""
-    //}
+    applicationVersion = ""
+    // }
 
     let analyticsConfiguration = AnalyticsConfiguration(
       trackingIdentifier: "UA-33667276-6",
@@ -153,17 +155,15 @@ open class ObsoleteApplication: NSApplication, ApplicationProtocol {
       }
     }
 
-    
     builder = SpeculidBuilder(configuration: configuration, imageSpecificationBuilder: imageSpecificationBuilder, tracker: self.tracker)
     let tracker = AnalyticsTracker(configuration: analyticsConfiguration, sessionManager: AnalyticsSessionManager(session: AnalyticsURLSession()))
     NSSetUncaughtExceptionHandler(exceptionHandlerMethod)
 
     exceptionHandler = {
-      tracker.track($0, {_ in })
+      tracker.track($0) { _ in }
     }
 
-    
-    tracker.track(AnalyticsEvent(category: "main", action: "launch", label: "application")) {_ in }
+    tracker.track(AnalyticsEvent(category: "main", action: "launch", label: "application")) { _ in }
 
     self.tracker = tracker
 
