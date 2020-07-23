@@ -10,5 +10,8 @@ public protocol CommandLineRunnerProtocol
 ### `activity(withArguments:_:)`
 
 ```swift
-func activity(withArguments arguments: SpeculidCommandArgumentSet, _ completed: @escaping (CommandLineActivityProtocol, Error?) -> Void) -> CommandLineActivityProtocol
+func activity(
+  withArguments arguments: SpeculidCommandArgumentSet,
+  _ completed: @escaping (CommandLineActivityProtocol, Error?) -> Void
+) -> CommandLineActivityProtocol
 ```

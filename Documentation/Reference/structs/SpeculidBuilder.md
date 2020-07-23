@@ -29,7 +29,11 @@ public let imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol
 ### `init(configuration:imageSpecificationBuilder:tracker:)`
 
 ```swift
-public init(configuration: SpeculidConfigurationProtocol, imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol, tracker: AnalyticsTrackerProtocol? = nil)
+public init(
+  configuration: SpeculidConfigurationProtocol,
+  imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol,
+  tracker: AnalyticsTrackerProtocol? = nil
+)
 ```
 
 ### `build(document:callback:)`

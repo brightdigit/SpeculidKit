@@ -29,5 +29,8 @@ public init(outputStream: TextOutputStream, errorStream: TextOutputStream)
 ### `activity(withArguments:_:)`
 
 ```swift
-public func activity(withArguments arguments: SpeculidCommandArgumentSet, _ completed: @escaping (CommandLineActivityProtocol, Error?) -> Void) -> CommandLineActivityProtocol
+public func activity(
+  withArguments arguments: SpeculidCommandArgumentSet,
+  _ completed: @escaping (CommandLineActivityProtocol, Error?) -> Void
+) -> CommandLineActivityProtocol
 ```

@@ -35,5 +35,10 @@ public init(url: URL, decoder: JSONDecoder, configuration _: SpeculidConfigurati
 ### `init(sandboxedFromFile:withURL:decoder:withManager:)`
 
 ```swift
-public init(sandboxedFromFile specificationsFile: SpeculidSpecificationsFileProtocol, withURL url: URL, decoder: JSONDecoder, withManager manager: Sandbox) throws
+public init(
+  sandboxedFromFile specificationsFile: SpeculidSpecificationsFileProtocol,
+  withURL url: URL,
+  decoder: JSONDecoder,
+  withManager manager: Sandbox
+) throws
 ```

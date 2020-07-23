@@ -47,5 +47,8 @@ public required init?(coder aDecoder: NSCoder)
 ### `init(file:geometryDimension:removeAlphaChannel:backgroundColor:)`
 
 ```swift
-public init(file: ImageFileProtocol, geometryDimension: GeometryDimension? = nil, removeAlphaChannel: Bool = false, backgroundColor: CairoColorProtocol? = nil)
+public init(file: ImageFileProtocol,
+            geometryDimension: GeometryDimension? = nil,
+            removeAlphaChannel: Bool = false,
+            backgroundColor: CairoColorProtocol? = nil)
 ```

@@ -3,7 +3,7 @@
 # `ClientIdentifier`
 
 ```swift
-public struct ClientIdentifier: ClientIdentifierDelegate
+public struct ClientIdentifier: ClientIdentifiable
 ```
 
 ## Properties

@@ -10,5 +10,7 @@ public struct RegularExpressionSetBuilder: RegularExpressionSetBuilderProtocol
 ### `buildRegularExpressions(fromDictionary:)`
 
 ```swift
-public func buildRegularExpressions(fromDictionary dictionary: [RegularExpressionKey: RegularExpressionArgumentSet]) throws -> RegularExpressionSetProtocol
+public func buildRegularExpressions(
+  fromDictionary dictionary: [RegularExpressionKey: RegularExpressionArgumentSet]
+) throws -> RegularExpressionSetProtocol
 ```
