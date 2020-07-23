@@ -35,10 +35,6 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     - name: Build Documentation
       run: sourcedocs generate --spm-module ${{ env.PACKAGE_NAME }}
-    #- name: Verify Valid Swift Package
-    #  run: curl -s https://raw.githubusercontent.com/SwiftPackageIndex/PackageList/main/script.sh | bash -s -- mine
-    - name: CocoaPods Action
-      run: pod lib lint
     - name: Upload to CodeCov.io
       run: bash <(curl https://codecov.io/bash) -F github -F macos -n ${{ github.sha }}
       env:
