@@ -25,7 +25,10 @@ public class CommandLineRunner: CommandLineRunnerProtocol {
     // _versionProvider = versionProvider
   }
 
-  public func activity(withArguments arguments: SpeculidCommandArgumentSet, _ completed: @escaping (CommandLineActivityProtocol, Error?) -> Void) -> CommandLineActivityProtocol {
+  public func activity(
+    withArguments arguments: SpeculidCommandArgumentSet,
+    _ completed: @escaping (CommandLineActivityProtocol, Error?) -> Void
+  ) -> CommandLineActivityProtocol {
     var error: Error?
     let operation = AsyncBlockOperation { completed in
       switch arguments {
@@ -41,7 +44,10 @@ public class CommandLineRunner: CommandLineRunnerProtocol {
 //        if let version = self.versionProvider.version {
 //          self.outputStream.write(version.developmentDescription)
 //        } else {
-        self.outputStream.write("\(ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"]) (\(ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"]))")
+        self.outputStream.write("""
+          "\(ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"]) \
+          (\(ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"]))"
+        """)
         // }
         #if DEBUG
           self.outputStream.write(" DEBUG")

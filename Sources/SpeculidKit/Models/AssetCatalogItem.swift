@@ -20,7 +20,6 @@ import Foundation
     aCoder.encode(role, forKey: "role")
   }
 
-  // swiftlint:disable identifier_name
   public required init?(coder aDecoder: NSCoder) {
     guard let filename = aDecoder.decodeObject(forKey: "filename") as? String else {
       return nil

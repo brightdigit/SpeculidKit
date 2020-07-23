@@ -22,7 +22,10 @@ public class VersionMenuItem: NSMenuItem {
 //    if let version = Application.current.version, Application.vcs != nil {
 //      title = version.developmentDescription
 //    } else {
-    title = "\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"])) (\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"])))"
+    title = """
+      \(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleShortVersionString"])) \
+      (\(String(describing: ObsoleteApplication.bundle.infoDictionary?["CFBundleVersion"])))
+    """
     // }
     super.init(title: title, action: nil, keyEquivalent: "")
   }

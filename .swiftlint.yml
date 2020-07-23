@@ -12,3 +12,5 @@ excluded:
   - DerivedData
   - .build
   - _archive
+  - packages
+  - DerivedData

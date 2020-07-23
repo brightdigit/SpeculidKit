@@ -30,9 +30,7 @@ public struct CommandLineInstaller {
       completed(cfError?.takeRetainedValue())
       return
     }
-    ObsoleteApplication.current.withInstaller {
-      result in
-
+    ObsoleteApplication.current.withInstaller { result in
       switch result {
       case let .success(installer):
         installer.installCommandLineTool(fromBundleURL: Bundle.main.bundleURL) { error in
