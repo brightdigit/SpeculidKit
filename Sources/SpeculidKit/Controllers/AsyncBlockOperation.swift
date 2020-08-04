@@ -13,7 +13,7 @@ open class AsyncBlockOperation: Operation {
     super.init()
   }
 
-  open override func start() {
+  override open func start() {
     guard (isExecuting || isCancelled) == false else { return }
     _executing = true
     block(finish)
@@ -28,11 +28,11 @@ open class AsyncBlockOperation: Operation {
     }
   }
 
-  open override var isAsynchronous: Bool {
+  override open var isAsynchronous: Bool {
     true
   }
 
-  open override var isExecuting: Bool {
+  override open var isExecuting: Bool {
     get { _executing }
     set {
       let key = "isExecuting"
@@ -42,7 +42,7 @@ open class AsyncBlockOperation: Operation {
     }
   }
 
-  open override var isFinished: Bool {
+  override open var isFinished: Bool {
     get { _finished }
     set {
       let key = "isFinished"

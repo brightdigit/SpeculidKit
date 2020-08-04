@@ -1,5 +1,3 @@
-
-
 import AssetLib
 import CairoSVG
 

@@ -40,6 +40,7 @@ public struct SpeculidApplicationModeParser: SpeculidApplicationModeParserProtoc
     }
   }
 }
+
 //
 // @available(swift, obsoleted: 4.2)
 // extension Array where Element: Equatable {

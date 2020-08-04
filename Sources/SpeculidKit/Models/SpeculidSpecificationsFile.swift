@@ -1,6 +1,6 @@
 import AppKit
-import Foundation
 import CairoSVG
+import Foundation
 
 public enum GeometryType {
   case width
@@ -10,7 +10,7 @@ public enum GeometryType {
 }
 
 public extension GeometryType {
-  var dimensionValue : CairoSVG.Dimension {
+  var dimensionValue: CairoSVG.Dimension {
     switch self {
     case .width: return .width
     case .height: return .height
@@ -21,8 +21,13 @@ public extension GeometryType {
 }
 
 public struct Geometry {
-  public let value : Float
-  public let dimension : GeometryType
+  public let value: Float
+  public let dimension: GeometryType
+
+  public init(value: Float, dimension: GeometryType) {
+    self.dimension = dimension
+    self.value = value
+  }
 }
 
 public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Codable {
@@ -39,22 +44,21 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
     case background
     case removeAlpha = "remove-alpha"
   }
-  
-  public init () {
-    self.assetDirectoryRelativePath = ""
-    self.sourceImageRelativePath = ""
-    self.removeAlpha = false
-    self.geometry = nil
-    self.background = nil
+
+  public init() {
+    assetDirectoryRelativePath = ""
+    sourceImageRelativePath = ""
+    removeAlpha = false
+    geometry = nil
+    background = nil
   }
-  
-  
-  public init (source: SpeculidSpecificationsFileProtocol) {
-    self.assetDirectoryRelativePath = source.assetDirectoryRelativePath
-    self.sourceImageRelativePath = source.sourceImageRelativePath
-    self.geometry = source.geometry
-    self.background = source.background
-    self.removeAlpha = source.removeAlpha
+
+  public init(source: SpeculidSpecificationsFileProtocol) {
+    assetDirectoryRelativePath = source.assetDirectoryRelativePath
+    sourceImageRelativePath = source.sourceImageRelativePath
+    geometry = source.geometry
+    background = source.background
+    removeAlpha = source.removeAlpha
   }
 
   public init(from decoder: Decoder) throws {
@@ -91,59 +95,4 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
     try container.encode(removeAlpha, forKey: CodingKeys.removeAlpha)
     try container.encode(background?.hexString(), forKey: CodingKeys.background)
   }
-  //
-  //  public init(assetSetRelativePath: String,
-  //              sourceImageRelativePath: URL,
-  //              geometry: Geometry? = nil,
-  //              background: NSColor? = nil,
-  //              removeAlpha: Bool = false) {
-  //    self.contentsDirectoryURL = contentsDirectoryURL
-  //    self.geometry = geometry
-  //    self.sourceImageURL = sourceImageURL
-  //    self.background = background
-  //    self.removeAlpha = removeAlpha
-  //  }
-  //
-  //  public init?(url: URL) {
-  //    let geometry: Geometry?
-  //    let background: NSColor?
-  //
-  //    guard let data = try? Data(contentsOf: url) else {
-  //      return nil
-  //    }
-  //
-  //    guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
-  //      return nil
-  //    }
-  //
-  //    guard let dictionary = json as? [String: Any] else {
-  //      return nil
-  //    }
-  //
-  //    guard let setRelativePath = dictionary["set"] as? String, let sourceRelativePath = dictionary["source"] as? String else {
-  //      return nil
-  //    }
-  //
-  //    if let backgroundString = dictionary["background"] as? String {
-  //      background = NSColor(backgroundString)
-  //    } else {
-  //      background = nil
-  //    }
-  //
-  //    if let geometryString = dictionary["geometry"] as? String {
-  //      geometry = Geometry(string: geometryString)
-  //    } else {
-  //      geometry = nil
-  //    }
-  //
-  //    let contentsJSONURL = url.deletingLastPathComponent().appendingPathComponent(setRelativePath, isDirectory: true).appendingPathComponent("Contents.json")
-  //
-  //    let sourceImageURL = url.deletingLastPathComponent().appendingPathComponent(sourceRelativePath)
-  //
-  //    contentsDirectoryURL = contentsJSONURL.deletingLastPathComponent()
-  //    self.sourceImageURL = sourceImageURL
-  //    self.geometry = geometry
-  //    self.background = background
-  //    removeAlpha = dictionary["remove-alpha"] as? Bool ?? false
-  //  }
 }

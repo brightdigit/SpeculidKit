@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol ClientIdentifierDelegate {
+public protocol ClientIdentifiable {
   var clientIdentifier: UUID { get }
 }

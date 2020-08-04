@@ -1,7 +1,8 @@
 import XCTest
 
-import SpeculidTests
+import SpeculidKitTests
 
 var tests = [XCTestCaseEntry]()
-tests += SpeculidTests.allTests()
+tests += SpeculidKitTests.__allTests()
+
 XCTMain(tests)

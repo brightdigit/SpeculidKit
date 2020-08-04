@@ -7,7 +7,7 @@
 //
 import Foundation
 
-public struct ClientIdentifier: ClientIdentifierDelegate {
+public struct ClientIdentifier: ClientIdentifiable {
   public static let shared = ClientIdentifier()
   public let clientIdentifier: UUID
 

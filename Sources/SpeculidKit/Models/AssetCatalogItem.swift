@@ -1,4 +1,5 @@
 //
+import AssetLib
 //  AssetCatalogDocument.swift
 //  Speculid-Mac-App
 //
@@ -6,7 +7,6 @@
 //  Copyright © 2019 Bright Digit, LLC. All rights reserved.
 //
 import Foundation
-import AssetLib
 
 @objc open class AssetCatalogItem: NSObject, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true
@@ -20,7 +20,6 @@ import AssetLib
     aCoder.encode(role, forKey: "role")
   }
 
-  // swiftlint:disable identifier_name
   public required init?(coder aDecoder: NSCoder) {
     guard let filename = aDecoder.decodeObject(forKey: "filename") as? String else {
       return nil

@@ -19,7 +19,7 @@ public class ErrorCollection: NSError {
     super.init(coder: aDecoder)
   }
 
-  public override func encode(with aCoder: NSCoder) {
+  override public func encode(with aCoder: NSCoder) {
     super.encode(with: aCoder)
     aCoder.encode(errors, forKey: "errors")
   }

@@ -1,13 +1,18 @@
 jobs:
   include:
-    - os: linux
-      dist: bionic
-      sudo: required
     - os: osx
       osx_image: xcode11.3
+    - os: osx
+      osx_image: xcode11.4
+    - os: osx
+      osx_image: xcode11.5
+    - os: osx
+      osx_image: xcode11.6
+    - os: osx
+      osx_image: xcode12
 env:
   global:
-  - FRAMEWORK_NAME=Speculid
+  - FRAMEWORK_NAME=SpeculidKit
 before_install:
   - bash -e ./Scripts/before_install.sh
 script:

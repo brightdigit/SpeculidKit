@@ -1,7 +1,7 @@
 import Foundation
 import GampKit
 
-public protocol ApplicationProtocol {//: VersionProvider {
+public protocol ApplicationProtocol { //: VersionProvider {
   func documents(url: URL) throws -> [SpeculidDocumentProtocol]
   var builder: SpeculidBuilderProtocol! { get }
   var service: ServiceProtocol! { get }

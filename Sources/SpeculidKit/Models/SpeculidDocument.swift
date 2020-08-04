@@ -1,5 +1,9 @@
-import Foundation
 import AssetLib
+import Foundation
+
+public protocol Sandbox {
+  func bookmarkURL(fromURL url: URL) throws -> URL
+}
 
 public struct SpeculidDocument: SpeculidDocumentProtocol {
   public let url: URL
@@ -10,7 +14,10 @@ public struct SpeculidDocument: SpeculidDocumentProtocol {
     let specificationsFileData = try Data(contentsOf: url)
     let specificationsFile = try decoder.decode(SpeculidSpecificationsFile.self, from: specificationsFileData)
 
-    let contentsJSONURL = url.deletingLastPathComponent().appendingPathComponent(specificationsFile.assetDirectoryRelativePath, isDirectory: true).appendingPathComponent("Contents.json")
+    let contentsJSONURL = url
+      .deletingLastPathComponent()
+      .appendingPathComponent(specificationsFile.assetDirectoryRelativePath, isDirectory: true)
+      .appendingPathComponent("Contents.json")
 
     let assetData = try Data(contentsOf: contentsJSONURL)
     let asset = try decoder.decode(AssetSpecificationDocument.self, from: assetData)
@@ -19,24 +26,25 @@ public struct SpeculidDocument: SpeculidDocumentProtocol {
     assetFile = AssetSpecificationFile(url: contentsJSONURL, document: asset)
     self.url = url
   }
-  
-  
-  public init(sandboxedFromFile specificationsFile: SpeculidSpecificationsFileProtocol, withURL url: URL, decoder: JSONDecoder, withManager manager: FileManagement) throws {
-//    let sourceURL = try manager.bookmarkURL(fromURL: url)
-//    let specificationsFileData = try Data(contentsOf: sourceURL)
-//    let specificationsFile = try decoder.decode(SpeculidSpecificationsFile.self, from: specificationsFileData)
 
-    let contentsAbsJSONURL = url.deletingLastPathComponent().appendingPathComponent(specificationsFile.assetDirectoryRelativePath).appendingPathComponent("Contents.json")
+  public init(
+    sandboxedFromFile specificationsFile: SpeculidSpecificationsFileProtocol,
+    withURL url: URL,
+    decoder: JSONDecoder,
+    withManager manager: Sandbox
+  ) throws {
+    let contentsAbsDirURL = url.deletingLastPathComponent().appendingPathComponent(specificationsFile.assetDirectoryRelativePath)
 
-    let contentsDirURL = try manager.bookmarkURL(fromURL: contentsAbsJSONURL)
-    let accessingScoped = contentsDirURL.startAccessingSecurityScopedResource()
-    if !accessingScoped {
-        print("startAccessingSecurityScopedResource returned false. This directory might not need it, or this URL might not be a security scoped URL, or maybe something's wrong?")
-    }
-    let contentsJSONURL = contentsDirURL
+    let contentsDirURL = try manager.bookmarkURL(fromURL: contentsAbsDirURL)
+    let dirAccessingScoped = contentsDirURL.startAccessingSecurityScopedResource()
+    let contentsJSONURL = contentsDirURL.appendingPathComponent("Contents.json")
+    let jsonAccessingScoped = contentsJSONURL.startAccessingSecurityScopedResource()
     let assetData = try Data(contentsOf: contentsJSONURL)
-    if accessingScoped {
-    contentsJSONURL.stopAccessingSecurityScopedResource()
+    if jsonAccessingScoped {
+      contentsJSONURL.stopAccessingSecurityScopedResource()
+    }
+    if dirAccessingScoped {
+      contentsDirURL.stopAccessingSecurityScopedResource()
     }
     let asset = try decoder.decode(AssetSpecificationDocument.self, from: assetData)
 

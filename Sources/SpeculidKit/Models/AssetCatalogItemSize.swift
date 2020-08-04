@@ -1,5 +1,5 @@
-import Foundation
 import AssetLib
+import Foundation
 
 @objc open class AssetCatalogItemSize: NSObject, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true
