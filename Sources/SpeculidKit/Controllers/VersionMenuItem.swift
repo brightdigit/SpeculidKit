@@ -1,11 +1,6 @@
 import Cocoa
-//
-// extension Version {
-//  public var buildHexidecimal: String {
-//    String(format: "%05x", build)
-//  }
-// }
 
+@available(*, deprecated)
 public class VersionMenuItem: NSMenuItem {
   public static func buildNumbers(fromResource resource: String?, withExtension extension: String?) -> Set<Int>? {
     if let url = ObsoleteApplication.bundle.url(forResource: resource, withExtension: `extension`) {

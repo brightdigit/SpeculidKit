@@ -1,6 +1,7 @@
 import AppKit
 import Foundation
 
+@available(*, deprecated)
 public struct StatusItemProvider: StatusItemProviderProtocol {
   public func statusItem(for _: Any?) -> NSStatusItem {
     let menu = NSMenu(title: "Speculid")

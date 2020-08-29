@@ -6,6 +6,7 @@ public struct InvalidDocumentURL: Error {
 
 extension Operation: CommandLineActivityProtocol {}
 
+@available(*, deprecated)
 public struct UnknownArgumentsError: Error {
   public let arguments: [String]
 }

@@ -1,5 +1,6 @@
 import Cocoa
 
+@available(*, deprecated)
 public class QuitMenuItem: NSMenuItem {
   public init() {
     super.init(title: "Quit", action: #selector(exit(_:)), keyEquivalent: "")
