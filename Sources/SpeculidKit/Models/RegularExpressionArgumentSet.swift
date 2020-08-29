@@ -2,28 +2,28 @@ import AppKit
 import Foundation
 import GampKit
 
-//@available(*, deprecated)
-//extension OperatingSystemVersion {
+// @available(*, deprecated)
+// extension OperatingSystemVersion {
 //  var fullDescription: String {
 //    [majorVersion, minorVersion, patchVersion].map {
 //      String(describing: $0)
 //    }.joined(separator: ".")
 //  }
-//}
+// }
 //
-//@available(*, deprecated)
-//var exceptionHandler: ((NSException) -> Void)?
-//@available(*, deprecated)
-//func exceptionHandlerMethod(exception: NSException) {
+// @available(*, deprecated)
+// var exceptionHandler: ((NSException) -> Void)?
+// @available(*, deprecated)
+// func exceptionHandlerMethod(exception: NSException) {
 //  if let handler = exceptionHandler {
 //    handler(exception)
 //  }
-//}
+// }
 
 public typealias RegularExpressionArgumentSet = (String, options: NSRegularExpression.Options)
 
-//@available(*, deprecated)
-//open class ObsoleteApplication: NSApplication, ApplicationProtocol {
+// @available(*, deprecated)
+// open class ObsoleteApplication: NSApplication, ApplicationProtocol {
 //  public func withInstaller(_ completed: (Result<InstallerProtocol, Error>) -> Void) {
 //    installerObjectInterfaceProvider.remoteObjectProxyWithHandler(completed)
 //  }
@@ -156,7 +156,7 @@ public typealias RegularExpressionArgumentSet = (String, options: NSRegularExpre
 //    }
 //
 //    builder = SpeculidBuilder(configuration: configuration, imageSpecificationBuilder: imageSpecificationBuilder, tracker: self.tracker)
-//    
+//
 //    let tracker = AnalyticsTracker(configuration: analyticsConfiguration, sessionManager: AnalyticsSessionManager(session: AnalyticsURLSession()))
 //    NSSetUncaughtExceptionHandler(exceptionHandlerMethod)
 //
@@ -208,4 +208,4 @@ public typealias RegularExpressionArgumentSet = (String, options: NSRegularExpre
 //  }
 //
 //  public static let bundle = Bundle(for: ObsoleteApplication.self)
-//}
+// }
