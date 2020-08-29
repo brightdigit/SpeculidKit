@@ -30,20 +30,20 @@ public struct CommandLineInstaller {
       completed(cfError?.takeRetainedValue())
       return
     }
-    ObsoleteApplication.current.withInstaller { result in
-      switch result {
-      case let .success(installer):
-        installer.installCommandLineTool(fromBundleURL: Bundle.main.bundleURL) { error in
-          debugPrint(error)
-          var cfError: Unmanaged<CFError>?
-          SMJobRemove(kSMDomainSystemLaunchd, "com.brightdigit.Speculid-Mac-Installer" as CFString, authorizationRef, true, &cfError)
-          completed(error)
-        }
-      case let .failure(error):
-        debugPrint(error)
-        completed(nil)
-      }
-    }
+//    ObsoleteApplication.current.withInstaller { result in
+//      switch result {
+//      case let .success(installer):
+//        installer.installCommandLineTool(fromBundleURL: Bundle.main.bundleURL) { error in
+//          debugPrint(error)
+//          var cfError: Unmanaged<CFError>?
+//          SMJobRemove(kSMDomainSystemLaunchd, "com.brightdigit.Speculid-Mac-Installer" as CFString, authorizationRef, true, &cfError)
+//          completed(error)
+//        }
+//      case let .failure(error):
+//        debugPrint(error)
+//        completed(nil)
+//      }
+//    }
   }
 }
 

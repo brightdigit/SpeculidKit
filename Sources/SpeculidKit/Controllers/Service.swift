@@ -3,19 +3,6 @@ import CairoSVG
 
 public final class Service: NSObject {
   let exportQueue = DispatchQueue(label: "export", qos: .default, attributes: .concurrent)
-//  public func updateAssetCatalogAtURL(_ url: URL, withItems items: [AssetCatalogItem], _ callback: @escaping ((NSError?) -> Void)) {
-//    let document = AssetSpecificationDocument(info: nil, images: items)
-//    let encoder = JSONEncoder()
-//    encoder.outputFormatting = .prettyPrinted
-//    do {
-//      let data = try encoder.encode(document)
-//      try data.write(to: url)
-//    } catch {
-//      callback(error as NSError)
-//      return
-//    }
-//    callback(nil)
-//  }
 
   public func exportImageAtURL(_ url: URL, toSpecifications specifications: [ImageSpecification], _ callback: @escaping ((NSError?) -> Void)) {
     let errorQueue = DispatchQueue(label: "error", qos: .default, attributes: .concurrent)
