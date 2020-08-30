@@ -22,7 +22,7 @@ else
   bash <(curl https://codecov.io/bash) -F travis -F bionic -n $TRAVIS_JOB_NUMBER-$TRAVIS_OS_NAME
 fi
 
-if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
+#if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
   #swift package dump-package | jq -e ".products | length > 0"
   #pod lib lint
   #swift package generate-xcodeproj
@@ -30,4 +30,4 @@ if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
   #xcodebuild -workspace Example/Example.xcworkspace -scheme "iOS_Example"  ONLY_ACTIVE_ARCH=NO  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO  CODE_SIGNING_ALLOWED=NO
   #xcodebuild -workspace Example/Example.xcworkspace -scheme "tvOS_Example"  ONLY_ACTIVE_ARCH=NO   CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO  CODE_SIGNING_ALLOWED=NO
   #xcodebuild -workspace Example/Example.xcworkspace -scheme "macOS_Example"  ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO  CODE_SIGNING_ALLOWED=NO
-fi
+#fi
