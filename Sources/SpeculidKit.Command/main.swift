@@ -15,15 +15,15 @@ extension URL {
     let baseComponents = base.standardized.pathComponents
 
     // Find number of common path components:
-    var i = 0
-    while i < destComponents.count, i < baseComponents.count,
-      destComponents[i] == baseComponents[i] {
-      i += 1
+    var index = 0
+    while index < destComponents.count, index < baseComponents.count,
+      destComponents[index] == baseComponents[index] {
+      index += 1
     }
 
     // Build relative path:
-    var relComponents = Array(repeating: "..", count: baseComponents.count - i)
-    relComponents.append(contentsOf: destComponents[i...])
+    var relComponents = Array(repeating: "..", count: baseComponents.count - index)
+    relComponents.append(contentsOf: destComponents[index...])
     return relComponents.joined(separator: "/")
   }
 }
@@ -87,7 +87,11 @@ extension Speculid {
       let service = Service()
       let imageSpecificationBuilder = SpeculidImageSpecificationBuilder()
       let imageSpecs = try document.assetFile.document.images.map {
-        try imageSpecificationBuilder.imageSpecification(forURL: document.destinationURL(forFileName: $0.filename ?? document.destinationName(forImage: $0)), withSpecifications: document.specificationsFile, andAsset: $0)
+        try imageSpecificationBuilder.imageSpecification(
+          forURL: document.destinationURL(
+            forFileName: $0.filename ?? document.destinationName(forImage: $0)),
+          withSpecifications: document.specificationsFile,
+          andAsset: $0)
       }
       var result: Result<Void, Error>?
       DispatchQueue.global(qos: .userInitiated).async {

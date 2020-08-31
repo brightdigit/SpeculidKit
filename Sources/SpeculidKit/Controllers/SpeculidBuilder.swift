@@ -4,7 +4,6 @@ import GampKit
 
 public struct SpeculidBuilder: SpeculidBuilderProtocol {
   public let tracker: AnalyticsTrackerProtocol?
-  // public let configuration: SpeculidConfigurationProtocol
   public let imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol
 
   public init(
@@ -39,18 +38,6 @@ public struct SpeculidBuilder: SpeculidBuilderProtocol {
         callback(error)
         return
       }
-//        let mode = self.configuration.mode
-//        guard case let .command(args) = mode else {
-//          callback(error)
-//          return
-//        }
-      ////        guard case let .process(_, true) = args else {
-      ////          callback(error)
-      ////          return
-      ////        }
-//        let items = destinationFileNames.map(
-//          AssetCatalogItem.init
-//        )
     }
   }
 }
