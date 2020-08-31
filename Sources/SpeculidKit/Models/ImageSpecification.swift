@@ -24,7 +24,8 @@ import Cocoa
       let dimensionValue = _dimensionValue,
       let value = _value,
       let removeAlphaChannel = _removeAlphaChannel,
-      let dimension = Dimension(rawValue: dimensionValue) else {
+      let dimension = Dimension(rawValue: dimensionValue)
+    else {
       return nil
     }
 

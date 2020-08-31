@@ -1,31 +1,31 @@
 import ArgumentParser
+import AssetLib
 import Foundation
 import SpeculidKit
-import AssetLib
 
 extension URL {
-    func relativePath(from base: URL) -> String? {
-        // Ensure that both URLs represent files:
-        guard self.isFileURL && base.isFileURL else {
-            return nil
-        }
-
-        // Remove/replace "." and "..", make paths absolute:
-        let destComponents = self.standardized.pathComponents
-        let baseComponents = base.standardized.pathComponents
-
-        // Find number of common path components:
-        var i = 0
-        while i < destComponents.count && i < baseComponents.count
-            && destComponents[i] == baseComponents[i] {
-                i += 1
-        }
-
-        // Build relative path:
-        var relComponents = Array(repeating: "..", count: baseComponents.count - i)
-        relComponents.append(contentsOf: destComponents[i...])
-        return relComponents.joined(separator: "/")
+  func relativePath(from base: URL) -> String? {
+    // Ensure that both URLs represent files:
+    guard isFileURL, base.isFileURL else {
+      return nil
     }
+
+    // Remove/replace "." and "..", make paths absolute:
+    let destComponents = standardized.pathComponents
+    let baseComponents = base.standardized.pathComponents
+
+    // Find number of common path components:
+    var i = 0
+    while i < destComponents.count, i < baseComponents.count,
+      destComponents[i] == baseComponents[i] {
+      i += 1
+    }
+
+    // Build relative path:
+    var relComponents = Array(repeating: "..", count: baseComponents.count - i)
+    relComponents.append(contentsOf: destComponents[i...])
+    return relComponents.joined(separator: "/")
+  }
 }
 
 struct Speculid: ParsableCommand {
@@ -36,7 +36,6 @@ struct Speculid: ParsableCommand {
 }
 
 extension Speculid {
-
   struct Initialize: ParsableCommand {
     @Option
     var assetDirectory: String
@@ -58,7 +57,7 @@ extension Speculid {
       let contentsData = try Data(contentsOf: contentsJSON)
       let setDocument = try decoder.decode(AssetSpecificationDocument.self, from: contentsData)
 
-     let encoder = JSONEncoder()
+      let encoder = JSONEncoder()
       let outputFormatting: JSONEncoder.OutputFormatting
       if #available(OSX 10.15, *) {
         outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
@@ -75,6 +74,7 @@ extension Speculid {
       try data.write(to: destinationSpecFileURL)
     }
   }
+
   struct Process: ParsableCommand {
     @Argument
     var file: String = ""
