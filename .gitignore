@@ -165,3 +165,8 @@ xcuserdata
 Pods
 *.lcov
 Brewfile.lock.json
+Package.resolved
+Documentation/Reference/README.md
+
+*.dump
+*.dump.zip

@@ -19,8 +19,6 @@ var sourceImageURL: URL
 func destinationName(forImage image: AssetSpecificationProtocol) -> String
 ```
 
-### `destinationURL(forImage:)`
-
 ### `destinationURL(forFileName:)`
 
 ```swift

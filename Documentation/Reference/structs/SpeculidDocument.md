@@ -26,10 +26,10 @@ public let assetFile: AssetSpecificationFileProtocol
 ```
 
 ## Methods
-### `init(url:decoder:configuration:)`
+### `init(url:decoder:)`
 
 ```swift
-public init(url: URL, decoder: JSONDecoder, configuration _: SpeculidConfigurationProtocol? = nil) throws
+public init(url: URL, decoder: JSONDecoder) throws
 ```
 
 ### `init(sandboxedFromFile:withURL:decoder:withManager:)`

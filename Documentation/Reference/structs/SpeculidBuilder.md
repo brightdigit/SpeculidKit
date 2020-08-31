@@ -13,12 +13,6 @@ public struct SpeculidBuilder: SpeculidBuilderProtocol
 public let tracker: AnalyticsTrackerProtocol?
 ```
 
-### `configuration`
-
-```swift
-public let configuration: SpeculidConfigurationProtocol
-```
-
 ### `imageSpecificationBuilder`
 
 ```swift
@@ -26,11 +20,10 @@ public let imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol
 ```
 
 ## Methods
-### `init(configuration:imageSpecificationBuilder:tracker:)`
+### `init(imageSpecificationBuilder:tracker:)`
 
 ```swift
 public init(
-  configuration: SpeculidConfigurationProtocol,
   imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol,
   tracker: AnalyticsTrackerProtocol? = nil
 )
