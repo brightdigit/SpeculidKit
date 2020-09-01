@@ -91,7 +91,8 @@ extension Speculid {
           forURL: document.destinationURL(
             forFileName: $0.filename ?? document.destinationName(forImage: $0)),
           withSpecifications: document.specificationsFile,
-          andAsset: $0)
+          andAsset: $0
+        )
       }
       var result: Result<Void, Error>?
       DispatchQueue.global(qos: .userInitiated).async {
