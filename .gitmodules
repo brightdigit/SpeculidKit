@@ -1,9 +1,19 @@
 [submodule "scripts/github-markdown-toc"]
 	path = scripts/github-markdown-toc
 	url = https://github.com/ekalinin/github-markdown-toc.git
-[submodule "packages/homebrew"]
-	path = packages/homebrew
-	url = https://github.com/brightdigit/homebrew-speculid.git
-[submodule "packages/fastlane"]
-	path = packages/fastlane
-	url = https://github.com/brightdigit/fastlane-plugin-speculid.git
+[submodule "packages/CairoSVG"]
+	path = packages/CairoSVG
+	url = https://github.com/brightdigit/CairoSVG.git
+	branch = xcframework-as-ci
+[submodule "packages/GampKit"]
+	path = packages/GampKit
+	url = https://github.com/brightdigit/GampKit.git
+	branch = feature/speculid-support
+[submodule "packages/AssetLib"]
+	path = packages/AssetLib
+	url = https://github.com/brightdigit/AssetLib.git
+	branch = feature/speculid-support
+[submodule "packages/SwiftDraw"]
+	path = packages/SwiftDraw
+	url = https://github.com/brightdigit/SwiftDraw.git
+	branch = feature/speculid-support
