@@ -4,17 +4,17 @@ public protocol SpeculidBuilderProtocol {
 }
 
 public extension SpeculidBuilderProtocol {
-  @available(*, deprecated: 2.0.0)
-  func build(document: SpeculidDocumentProtocol) -> Error? {
-    var result: Error?
-    let semaphone = DispatchSemaphore(value: 0)
-    build(document: document) { error in
-      result = error
-      semaphone.signal()
-    }
-    semaphone.wait()
-    return result
-  }
+//  @available(*, deprecated: 2.0.0)
+//  func build(document: SpeculidDocumentProtocol) -> Error? {
+//    var result: Error?
+//    let semaphone = DispatchSemaphore(value: 0)
+//    build(document: document) { error in
+//      result = error
+//      semaphone.signal()
+//    }
+//    semaphone.wait()
+//    return result
+//  }
 
   func build(documents: [SpeculidDocumentProtocol]) -> Error? {
     var errors = [Error]()

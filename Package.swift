@@ -26,7 +26,7 @@ let package = Package(
     .package(url: "https://github.com/eneko/SourceDocs", from: "1.0.0"),
     .package(path: "./packages/SwiftDraw"),
     .package(url: "https://github.com/BrightDigit/CairoSVG", from: "1.0.0"),
-    .package(url: "https://github.com/apple/swift-argument-parser", from: "0.2.0")
+    .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0")
   ],
   targets: [
     // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -57,7 +57,7 @@ let package = Package(
         "swift test --enable-code-coverage --enable-test-discovery --generate-linuxmain",
         "swift run swiftformat .",
         "swift run swiftlint autocorrect",
-        "swift run sourcedocs generate --spm-module SpeculidKit -r",
+        "swift run sourcedocs generate build -c --spm-module SpeculidKit -r",
         // "swift run swiftpmls mine",
         "git add .",
         "swift run swiftformat --lint .",

@@ -4,15 +4,12 @@ import GampKit
 
 public struct SpeculidBuilder: SpeculidBuilderProtocol {
   public let tracker: AnalyticsTrackerProtocol?
-  public let configuration: SpeculidConfigurationProtocol
   public let imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol
 
   public init(
-    configuration: SpeculidConfigurationProtocol,
     imageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol,
     tracker: AnalyticsTrackerProtocol? = nil
   ) {
-    self.configuration = configuration
     self.imageSpecificationBuilder = imageSpecificationBuilder
     self.tracker = tracker
   }
@@ -35,24 +32,12 @@ public struct SpeculidBuilder: SpeculidBuilderProtocol {
     } catch {
       return callback(error)
     }
-    ObsoleteApplication.current.service
-      .exportImageAtURL(document.sourceImageURL, toSpecifications: imageSpecifications) { error in
-        if let error = error {
-          callback(error)
-          return
-        }
-        let mode = self.configuration.mode
-        guard case let .command(args) = mode else {
-          callback(error)
-          return
-        }
-        guard case let .process(_, true) = args else {
-          callback(error)
-          return
-        }
-        let items = destinationFileNames.map(
-          AssetCatalogItem.init
-        )
+    let service = Service()
+    service.exportImageAtURL(document.sourceImageURL, toSpecifications: imageSpecifications) { error in
+      if let error = error {
+        callback(error)
+        return
       }
+    }
   }
 }

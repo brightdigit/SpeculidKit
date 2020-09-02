@@ -2,16 +2,6 @@ import AssetLib
 import CairoSVG
 import Foundation
 
-// @available(*, deprecated: 2.0.0)
-// public struct NoGeometrySpecifiedError: Error {
-//  public let asset: AssetSpecificationProtocol
-//  public let specification: SpeculidSpecificationsFileProtocol
-//
-//  public init(forAsset asset: AssetSpecificationProtocol, withSpecs specification: SpeculidSpecificationsFileProtocol) {
-//    self.asset = asset
-//    self.specification = specification
-//  }
-// }
 public struct SpeculidImageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol {
   public init() {}
   public func imageSpecification(

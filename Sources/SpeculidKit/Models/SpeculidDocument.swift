@@ -10,7 +10,7 @@ public struct SpeculidDocument: SpeculidDocumentProtocol {
   public let specificationsFile: SpeculidSpecificationsFileProtocol
   public let assetFile: AssetSpecificationFileProtocol
 
-  public init(url: URL, decoder: JSONDecoder, configuration _: SpeculidConfigurationProtocol? = nil) throws {
+  public init(url: URL, decoder: JSONDecoder) throws {
     let specificationsFileData = try Data(contentsOf: url)
     let specificationsFile = try decoder.decode(SpeculidSpecificationsFile.self, from: specificationsFileData)
 

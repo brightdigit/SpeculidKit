@@ -1,10 +1,9 @@
 #!/bin/bash
 
-SWIFT_VER="5.2"
+SWIFT_VER="5.3"
 
 if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
-  brew update >/dev/null
-  brew bundle
+  echo "No Actions for macOS"
 elif [[ $TRAVIS_OS_NAME = 'linux' ]]; then
   RELEASE_DOT=$(lsb_release -sr)
   RELEASE_NUM=${RELEASE_DOT//[-._]/}
