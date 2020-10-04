@@ -8,7 +8,7 @@ public struct SpeculidImageSpecificationBuilder: SpeculidImageSpecificationBuild
     forURL destinationURL: URL,
     withSpecifications specifications: SpeculidSpecificationsFileProtocol,
     andAsset asset: AssetSpecificationProtocol
-  ) throws -> ImageSpecification {
+  ) throws -> ImageSpecificationObject {
     let destinationFile = try ImageFile(url: destinationURL)
 
     let geometry: Geometry?
@@ -25,7 +25,7 @@ public struct SpeculidImageSpecificationBuilder: SpeculidImageSpecificationBuild
 
     let geometryDimension = geometry.map(GeometryDimension.init(geometry:))
 
-    return ImageSpecification(
+    return ImageSpecificationObject(
       file: destinationFile,
       geometryDimension: geometryDimension,
       removeAlphaChannel: specifications.removeAlpha,

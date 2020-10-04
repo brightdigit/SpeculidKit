@@ -170,3 +170,4 @@ Documentation/Reference/README.md
 
 *.dump
 *.dump.zip
+**/Assets.xcassets/*.appiconset/*.png

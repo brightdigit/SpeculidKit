@@ -1,5 +1,6 @@
 import Foundation
 import Security
+#if os(macOS)
 import ServiceManagement
 
 struct TimeoutError: Error {}
@@ -68,3 +69,4 @@ extension CommandLineInstaller {
     }
   }
 }
+#endif

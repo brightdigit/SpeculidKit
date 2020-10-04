@@ -26,6 +26,6 @@ public extension SpeculidBuilderProtocol {
     }
 
     group.wait()
-    return ArrayError.error(for: errors)
+    return ErrorCollection.error(for: errors)
   }
 }

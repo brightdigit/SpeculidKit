@@ -84,7 +84,7 @@ extension Speculid {
     func run() throws {
       let url = URL(fileURLWithPath: file)
       let document = try SpeculidDocument(url: url, decoder: .init())
-      let service = Service()
+      let service = ServiceObject()
       let imageSpecificationBuilder = SpeculidImageSpecificationBuilder()
       let imageSpecs = try document.assetFile.document.images.map {
         try imageSpecificationBuilder.imageSpecification(
