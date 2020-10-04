@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated)
 public struct CommandLineArgumentProvider: CommandLineArgumentProviderProtocol {
   public let commandLine: CommandLine.Type
 

@@ -1,6 +1,7 @@
 import AssetLib
 import CairoSVG
 
+@available(*, deprecated)
 public final class Service: NSObject {
   let exportQueue = DispatchQueue(label: "export", qos: .default, attributes: .concurrent)
 

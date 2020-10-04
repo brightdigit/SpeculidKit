@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated)
 public enum SpeculidCommandArgumentSet: Equatable {
   public static func == (lhs: SpeculidCommandArgumentSet, rhs: SpeculidCommandArgumentSet) -> Bool {
     switch (lhs, rhs) {

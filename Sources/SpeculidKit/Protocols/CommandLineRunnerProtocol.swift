@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated)
 public protocol CommandLineRunnerProtocol {
   func activity(
     withArguments arguments: SpeculidCommandArgumentSet,

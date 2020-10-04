@@ -31,16 +31,6 @@ public extension SpeculidDocumentProtocol {
     }
   }
 
-//  @available(*, unavailable)
-//  func destinationURL(forImage image: AssetSpecificationProtocol) -> URL {
-//    url
-//      .deletingLastPathComponent()
-//      .appendingPathComponent(
-//        specificationsFile.assetDirectoryRelativePath,
-//        isDirectory: true
-//      ).appendingPathComponent(destinationName(forImage: image))
-//  }
-
   func destinationURL(forFileName fileName: String) -> URL {
     url
       .deletingLastPathComponent()

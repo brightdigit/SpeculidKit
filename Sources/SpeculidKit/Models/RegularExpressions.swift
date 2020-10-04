@@ -4,8 +4,4 @@ public typealias RegularExpressionParameters = (String, NSRegularExpression.Opti
 
 public struct RegularExpressions {
   public let dictionary: [RegularExpressionKey: NSRegularExpression]
-//
-//  public init(dictionary: [RegularExpressionKey: RegularExpressionParameters]) {
-//    self.dictionary = RegularExpressionSetBuilder().buildRegularExpressions(fromDictionary: dictionary)
-//  }
 }

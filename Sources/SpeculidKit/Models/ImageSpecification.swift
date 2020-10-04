@@ -1,6 +1,7 @@
 import CairoSVG
 import Cocoa
 
+@available(*, deprecated)
 @objc open class ImageSpecification: NSObject, ImageSpecificationProtocol, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true
 

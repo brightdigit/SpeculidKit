@@ -1,5 +1,6 @@
 import Foundation
 
+@available(*, deprecated)
 public struct ArrayError: Error {
   public let errors: [Error]
 
