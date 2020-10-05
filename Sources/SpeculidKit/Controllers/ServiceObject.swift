@@ -2,10 +2,10 @@ import AssetLib
 import CairoSVG
 
 @available(*, deprecated)
-public final class Service: NSObject {
+public final class ServiceObject: NSObject {
   let exportQueue = DispatchQueue(label: "export", qos: .default, attributes: .concurrent)
 
-  public func exportImageAtURL(_ url: URL, toSpecifications specifications: [ImageSpecification], _ callback: @escaping ((NSError?) -> Void)) {
+  public func exportImageAtURL(_ url: URL, toSpecifications specifications: [ImageSpecificationObject], _ callback: @escaping ((NSError?) -> Void)) {
     let errorQueue = DispatchQueue(label: "error", qos: .default, attributes: .concurrent)
     let imageFile = ImageFile(url: url, format: .svg)
     let builtImageHandle: ImageHandle?

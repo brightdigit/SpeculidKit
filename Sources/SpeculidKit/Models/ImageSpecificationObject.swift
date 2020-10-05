@@ -2,7 +2,7 @@ import CairoSVG
 import Cocoa
 
 @available(*, deprecated)
-@objc open class ImageSpecification: NSObject, ImageSpecificationProtocol, NSSecureCoding {
+@objc open class ImageSpecificationObject: NSObject, ImageSpecificationProtocol, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true
 
   public func encode(with aCoder: NSCoder) {

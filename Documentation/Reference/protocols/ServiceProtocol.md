@@ -10,5 +10,5 @@ public protocol ServiceProtocol
 ### `exportImageAtURL(_:toSpecifications:_:)`
 
 ```swift
-func exportImageAtURL(_ url: URL, toSpecifications specifications: [ImageSpecification], _ callback: @escaping ((NSError?) -> Void))
+func exportImageAtURL(_ url: URL, toSpecifications specifications: [ImageSpecificationObject], _ callback: @escaping ((NSError?) -> Void))
 ```
