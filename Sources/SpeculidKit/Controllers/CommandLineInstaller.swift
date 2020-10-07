@@ -1,38 +1,39 @@
 import Foundation
 import Security
-import ServiceManagement
+#if os(macOS)
+  import ServiceManagement
 
-struct TimeoutError: Error {}
-struct OSStatusError: Error {
-  let osStatus: OSStatus
-}
+  struct TimeoutError: Error {}
+  struct OSStatusError: Error {
+    let osStatus: OSStatus
+  }
 
-public struct CommandLineInstaller {
-  public static func start(_ completed: @escaping (Error?) -> Void) {
-    var authorizationRef: AuthorizationRef?
+  public struct CommandLineInstaller {
+    public static func start(_ completed: @escaping (Error?) -> Void) {
+      var authorizationRef: AuthorizationRef?
 
-    let name = kSMRightBlessPrivilegedHelper.withCString {
-      AuthorizationString($0)
-    }
-    var items = AuthorizationItem(name: name, valueLength: 0, value: nil, flags: 0)
+      let name = kSMRightBlessPrivilegedHelper.withCString {
+        AuthorizationString($0)
+      }
+      var items = AuthorizationItem(name: name, valueLength: 0, value: nil, flags: 0)
 
-    var rights = AuthorizationRights(count: 1, items: &items)
-    let flags: AuthorizationFlags = [.interactionAllowed, .extendRights, .preAuthorize]
+      var rights = AuthorizationRights(count: 1, items: &items)
+      let flags: AuthorizationFlags = [.interactionAllowed, .extendRights, .preAuthorize]
 
-    let osStatus = AuthorizationCreate(&rights, nil, flags, &authorizationRef)
+      let osStatus = AuthorizationCreate(&rights, nil, flags, &authorizationRef)
 
-    guard osStatus == errAuthorizationSuccess else {
-      completed(OSStatusError(osStatus: osStatus))
-      return
-    }
+      guard osStatus == errAuthorizationSuccess else {
+        completed(OSStatusError(osStatus: osStatus))
+        return
+      }
 
-    var cfError: Unmanaged<CFError>?
-    let result = SMJobBless(kSMDomainSystemLaunchd, "com.brightdigit.Speculid-Mac-Installer" as CFString, authorizationRef, &cfError)
+      var cfError: Unmanaged<CFError>?
+      let result = SMJobBless(kSMDomainSystemLaunchd, "com.brightdigit.Speculid-Mac-Installer" as CFString, authorizationRef, &cfError)
 
-    guard result else {
-      completed(cfError?.takeRetainedValue())
-      return
-    }
+      guard result else {
+        completed(cfError?.takeRetainedValue())
+        return
+      }
 //    ObsoleteApplication.current.withInstaller { result in
 //      switch result {
 //      case let .success(installer):
@@ -47,27 +48,28 @@ public struct CommandLineInstaller {
 //        completed(nil)
 //      }
 //    }
-  }
-}
-
-extension CommandLineInstaller {
-  public static func startSync() -> Error? {
-    var error: Error?
-    let semaphore = DispatchSemaphore(value: 0)
-    start {
-      error = $0
-      semaphore.signal()
     }
-    let result = semaphore.wait(timeout: .now() + 10)
-    if let error = error {
-      return error
-    } else {
-      switch result {
-      case .success:
-        return nil
-      case .timedOut:
-        return TimeoutError()
+  }
+
+  extension CommandLineInstaller {
+    public static func startSync() -> Error? {
+      var error: Error?
+      let semaphore = DispatchSemaphore(value: 0)
+      start {
+        error = $0
+        semaphore.signal()
+      }
+      let result = semaphore.wait(timeout: .now() + 10)
+      if let error = error {
+        return error
+      } else {
+        switch result {
+        case .success:
+          return nil
+        case .timedOut:
+          return TimeoutError()
+        }
       }
     }
   }
-}
+#endif

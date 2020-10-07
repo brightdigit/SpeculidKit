@@ -22,13 +22,13 @@
 
 ## Structs
 
--   [ArrayError](structs/ArrayError.md)
 -   [AssetSpecificationFile](structs/AssetSpecificationFile.md)
 -   [BadGeometryCGSizeValueError](structs/BadGeometryCGSizeValueError.md)
 -   [BadGeometryStringValueError](structs/BadGeometryStringValueError.md)
 -   [ClientIdentifier](structs/ClientIdentifier.md)
 -   [CommandLineArgumentProvider](structs/CommandLineArgumentProvider.md)
 -   [CommandLineInstaller](structs/CommandLineInstaller.md)
+-   [ErrorCollection](structs/ErrorCollection.md)
 -   [Geometry](structs/Geometry.md)
 -   [InstallType](structs/InstallType.md)
 -   [InstallerObjectInterfaceProvider](structs/InstallerObjectInterfaceProvider.md)
@@ -50,9 +50,9 @@
 
 -   [AssetCatalogItem](classes/AssetCatalogItem.md)
 -   [AssetCatalogItemSize](classes/AssetCatalogItemSize.md)
--   [ErrorCollection](classes/ErrorCollection.md)
 -   [ImageFile](classes/ImageFile.md)
 -   [ImageSpecificationObject](classes/ImageSpecificationObject.md)
+-   [NSErrorCollection](classes/NSErrorCollection.md)
 -   [ServiceObject](classes/ServiceObject.md)
 
 ## Enums
