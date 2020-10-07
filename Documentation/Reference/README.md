@@ -7,7 +7,6 @@
 -   [ClientIdentifiable](protocols/ClientIdentifiable.md)
 -   [CommandLineActivityProtocol](protocols/CommandLineActivityProtocol.md)
 -   [CommandLineArgumentProviderProtocol](protocols/CommandLineArgumentProviderProtocol.md)
--   [CommandLineRunnerProtocol](protocols/CommandLineRunnerProtocol.md)
 -   [InstallerObjectInterfaceProviderProtocol](protocols/InstallerObjectInterfaceProviderProtocol.md)
 -   [InstallerProtocol](protocols/InstallerProtocol.md)
 -   [RegularExpressionSetBuilderProtocol](protocols/RegularExpressionSetBuilderProtocol.md)
@@ -30,7 +29,6 @@
 -   [ClientIdentifier](structs/ClientIdentifier.md)
 -   [CommandLineArgumentProvider](structs/CommandLineArgumentProvider.md)
 -   [CommandLineInstaller](structs/CommandLineInstaller.md)
--   [FileTesting](structs/FileTesting.md)
 -   [Geometry](structs/Geometry.md)
 -   [InstallType](structs/InstallType.md)
 -   [InstallerObjectInterfaceProvider](structs/InstallerObjectInterfaceProvider.md)
@@ -61,7 +59,6 @@
 
 -   [GeometryType](enums/GeometryType.md)
 -   [RegularExpressionKey](enums/RegularExpressionKey.md)
--   [SpeculidCommandArgumentSet](enums/SpeculidCommandArgumentSet.md)
 -   [SpeculidSpecificationsFile.CodingKeys](enums/SpeculidSpecificationsFile.CodingKeys.md)
 -   [Sysctl.Error](enums/Sysctl.Error.md)
 -   [UIColorInputError](enums/UIColorInputError.md)

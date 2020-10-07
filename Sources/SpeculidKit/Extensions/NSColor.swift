@@ -175,16 +175,18 @@ extension String {
     }
 
     let index = self.index(startIndex, offsetBy: 1)
+    let index2 = self.index(startIndex, offsetBy: 2)
     let hexString = self[index...]
     switch hexString.count {
     case 4:
       return "#"
-        + hexString.substring(from: self.index(startIndex, offsetBy: 1))
-        + hexString.substring(to: self.index(startIndex, offsetBy: 1))
+
+        + hexString[index...]//hexString.substring(from: self.index(startIndex, offsetBy: 1))
+        + hexString[..<index]//hexString.substring(to: self.index(startIndex, offsetBy: 1))
     case 8:
       return "#"
-        + hexString.substring(from: self.index(startIndex, offsetBy: 2))
-        + hexString.substring(to: self.index(startIndex, offsetBy: 2))
+        + hexString[index2...]//+ hexString.substring(from: self.index(startIndex, offsetBy: 2))
+          + hexString[..<index2]//+ hexString.substring(to: self.index(startIndex, offsetBy: 2))
     default:
       return nil
     }

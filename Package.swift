@@ -14,7 +14,7 @@ let package = Package(
       name: "SpeculidKit",
       targets: ["SpeculidKit"]
     ),
-    .executable(name: "spcld", targets: ["SpeculidKit.Command"])
+    .executable(name: "speculid", targets: ["SpeculidKit.Command"])
 
   ],
   dependencies: [

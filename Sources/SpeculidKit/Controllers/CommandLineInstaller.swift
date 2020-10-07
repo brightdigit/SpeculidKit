@@ -11,7 +11,10 @@ public struct CommandLineInstaller {
   public static func start(_ completed: @escaping (Error?) -> Void) {
     var authorizationRef: AuthorizationRef?
 
-    var items = AuthorizationItem(name: kSMRightBlessPrivilegedHelper, valueLength: 0, value: nil, flags: 0)
+    let name = kSMRightBlessPrivilegedHelper.withCString {
+      AuthorizationString($0)
+    }
+    var items = AuthorizationItem(name: name, valueLength: 0, value: nil, flags: 0)
 
     var rights = AuthorizationRights(count: 1, items: &items)
     let flags: AuthorizationFlags = [.interactionAllowed, .extendRights, .preAuthorize]
