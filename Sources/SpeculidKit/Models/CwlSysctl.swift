@@ -3,6 +3,8 @@ import Foundation
 // swiftlint:disable all
 
 /// A "static"-only namespace around a series of functions that operate on buffers returned from the `Darwin.sysctl` function
+
+@available(*, deprecated)
 public struct Sysctl {
   /// Possible errors.
   public enum Error: Swift.Error {

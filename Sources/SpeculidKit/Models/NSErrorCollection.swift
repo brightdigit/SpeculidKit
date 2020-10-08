@@ -1,6 +1,6 @@
 import Cocoa
 
-public class ErrorCollection: NSError {
+public class NSErrorCollection: NSError {
   public let errors: [NSError]
 
   public init?(errors: [NSError]) {

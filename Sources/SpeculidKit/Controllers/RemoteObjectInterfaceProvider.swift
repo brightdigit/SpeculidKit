@@ -1,7 +1,9 @@
 import Foundation
 
+@available(*, deprecated)
 public struct NoServiceReturnedError: Error {}
 
+@available(*, deprecated)
 public struct RemoteObjectInterfaceProvider: RemoteObjectInterfaceProviderProtocol {
   public func remoteObjectProxyWithHandler(_ handler: (Result<ServiceProtocol, Error>) -> Void) {
     let interface = NSXPCInterface(with: ServiceProtocol.self)
@@ -30,6 +32,7 @@ public struct RemoteObjectInterfaceProvider: RemoteObjectInterfaceProviderProtoc
   }
 }
 
+@available(*, deprecated)
 public struct InstallerObjectInterfaceProvider: InstallerObjectInterfaceProviderProtocol {
   public func remoteObjectProxyWithHandler(_ handler: (Result<InstallerProtocol, Error>) -> Void) {
     let interface = NSXPCInterface(with: InstallerProtocol.self)

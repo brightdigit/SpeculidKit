@@ -14,7 +14,7 @@ let package = Package(
       name: "SpeculidKit",
       targets: ["SpeculidKit"]
     ),
-    .executable(name: "spcld", targets: ["SpeculidKit.Command"])
+    .executable(name: "speculid", targets: ["SpeculidKit.Command"])
 
   ],
   dependencies: [
@@ -22,9 +22,9 @@ let package = Package(
 
     .package(path: "./packages/AssetLib"),
     .package(path: "./packages/GampKit"),
+    .package(path: "./packages/SwiftDraw"),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.0.5"),
     .package(url: "https://github.com/eneko/SourceDocs", from: "1.0.0"),
-    .package(path: "./packages/SwiftDraw"),
     .package(url: "https://github.com/BrightDigit/CairoSVG", from: "1.0.0"),
     .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0")
   ],
@@ -33,7 +33,7 @@ let package = Package(
     // Targets can depend on other targets in this package, and on products in packages which this package depends on.
     .target(
       name: "SpeculidKit",
-      dependencies: ["AssetLib", "GampKit", "SwiftDraw", "CairoSVG"]
+      dependencies: ["AssetLib", "GampKit", "CairoSVG", "SwiftDraw"]
     ),
     .target(
       name: "SpeculidKit.Command",

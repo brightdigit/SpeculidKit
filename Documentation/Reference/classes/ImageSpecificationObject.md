@@ -1,9 +1,9 @@
 **CLASS**
 
-# `ImageSpecification`
+# `ImageSpecificationObject`
 
 ```swift
-@objc open class ImageSpecification: NSObject, ImageSpecificationProtocol, NSSecureCoding
+@objc open class ImageSpecificationObject: NSObject, ImageSpecificationProtocol, NSSecureCoding
 ```
 
 ## Properties
