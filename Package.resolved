@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AssetLib",
+        "repositoryURL": "https://github.com/BrightDigit/AssetLib",
+        "state": {
+          "branch": "feature/speculid-support",
+          "revision": "7ed6097a9c783a8e97137ae6d18a00b099dcfd2b",
+          "version": null
+        }
+      },
+      {
         "package": "CairoSVG",
         "repositoryURL": "https://github.com/BrightDigit/CairoSVG",
         "state": {
@@ -17,6 +26,15 @@
           "branch": null,
           "revision": "ab68611013dec67413628ac87c1f29e8427bc8e4",
           "version": "0.17.0"
+        }
+      },
+      {
+        "package": "GampKit",
+        "repositoryURL": "https://github.com/BrightDigit/GampKit",
+        "state": {
+          "branch": "feature/speculid-support",
+          "revision": "3463ce8f8a8c1736e78e1fde0d46bdd572d4cd00",
+          "version": null
         }
       },
       {
@@ -152,6 +170,15 @@
           "branch": null,
           "revision": "8656a25cb906c1896339f950ac960ee1b4fe8034",
           "version": "0.4.0"
+        }
+      },
+      {
+        "package": "SwiftDraw",
+        "repositoryURL": "https://github.com/BrightDigit/SwiftDraw",
+        "state": {
+          "branch": "feature/throwing",
+          "revision": "78fa0adbdb195319961d416e5000f9226cae490b",
+          "version": null
         }
       },
       {

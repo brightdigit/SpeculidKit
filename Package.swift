@@ -20,9 +20,9 @@ let package = Package(
   dependencies: [
     // Dependencies declare other packages that this package depends on.
 
-    .package(path: "./packages/AssetLib"),
-    .package(path: "./packages/GampKit"),
-    .package(path: "./packages/SwiftDraw"),
+    .package(url: "https://github.com/BrightDigit/AssetLib", .branch("feature/speculid-support")),
+    .package(url: "https://github.com/BrightDigit/GampKit", .branch("feature/speculid-support")),
+    .package(url: "https://github.com/BrightDigit/SwiftDraw", .branch("feature/throwing")),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.0.5"),
     .package(url: "https://github.com/eneko/SourceDocs", from: "1.0.0"),
     .package(url: "https://github.com/BrightDigit/CairoSVG", from: "1.0.0"),
