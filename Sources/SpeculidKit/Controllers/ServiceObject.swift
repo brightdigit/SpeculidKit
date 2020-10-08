@@ -70,7 +70,7 @@ public final class ServiceObject: NSObject {
           case .pdf:
             data = image.pdfData()
           case .png:
-            data = image.pngData(size: nil, scale: CGFloat(scale), backgroundColor: specs.backgroundColor as! NSColor, removeAlpha: specs.removeAlphaChannel)
+            data = image.pngData(size: nil, scale: CGFloat(scale), backgroundColor: specs.backgroundColor as? NSColor, removeAlpha: specs.removeAlphaChannel)
           case .svg:
             data = try Data(contentsOf: url)
           }
