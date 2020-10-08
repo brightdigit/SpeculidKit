@@ -30,19 +30,6 @@ public final class ServiceObject: NSObject {
     }
   }
 
-//    + (double) mapSize: (CGSize) size toDimension: (GeometryDimension) dimensions {
-//      switch (dimensions.dimension) {
-//        case kWidth:
-//          return dimensions.value/size.width;
-//        case kHeight:
-//          return dimensions.value/size.height;
-//        case kScale:
-//        return dimensions.value;
-//        case kUnspecified:
-//          return 1.0;
-//      }
-//    }
-
   public func exportImageAtURL(_ url: URL, toSpecifications specifications: [ImageSpecificationObject], _ callback: @escaping ((NSError?) -> Void)) {
     let errorQueue = DispatchQueue(label: "error", qos: .default, attributes: .concurrent)
 
@@ -52,7 +39,7 @@ public final class ServiceObject: NSObject {
     do {
       image = try SwiftDraw.Image(fileURL: url)
     } catch {
-      callback(error as! NSError)
+      callback(error as NSError)
       return
     }
 
@@ -70,7 +57,12 @@ public final class ServiceObject: NSObject {
           case .pdf:
             data = image.pdfData()
           case .png:
-            data = image.pngData(size: nil, scale: CGFloat(scale), backgroundColor: specs.backgroundColor as? NSColor, removeAlpha: specs.removeAlphaChannel)
+            data = image.pngData(
+              size: nil,
+              scale: CGFloat(scale),
+              backgroundColor: specs.backgroundColor as? NSColor,
+              removeAlpha: specs.removeAlphaChannel
+            )
           case .svg:
             data = try Data(contentsOf: url)
           }
