@@ -14,7 +14,7 @@ let package = Package(
       name: "SpeculidKit",
       targets: ["SpeculidKit"]
     ),
-    .executable(name: "speculid", targets: ["SpeculidKit.Command"])
+    .executable(name: "speculid", targets: ["SpeculidKitCommand"])
 
   ],
   dependencies: [
@@ -36,7 +36,7 @@ let package = Package(
       dependencies: ["AssetLib", "GampKit", "CairoSVG", "SwiftDraw"]
     ),
     .target(
-      name: "SpeculidKit.Command",
+      name: "SpeculidKitCommand",
       dependencies: ["SpeculidKit",
                      .product(name: "ArgumentParser", package: "swift-argument-parser")]
     ),

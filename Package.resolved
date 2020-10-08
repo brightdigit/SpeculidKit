@@ -83,15 +83,6 @@
         }
       },
       {
-        "package": "ProcessRunner",
-        "repositoryURL": "https://github.com/eneko/ProcessRunner.git",
-        "state": {
-          "branch": null,
-          "revision": "bedc55797b206bff50f652ffad8269223320fee5",
-          "version": "1.1.0"
-        }
-      },
-      {
         "package": "Quick",
         "repositoryURL": "https://github.com/Quick/Quick.git",
         "state": {
@@ -132,8 +123,8 @@
         "repositoryURL": "https://github.com/eneko/SourceDocs",
         "state": {
           "branch": null,
-          "revision": "6c6443434ef04328dc18ac71c73e7a2ec0d531d1",
-          "version": "1.2.1"
+          "revision": "8a828bdfbfc501811c8e5479f7265d37fe3deda7",
+          "version": "1.2.0"
         }
       },
       {
@@ -150,8 +141,8 @@
         "repositoryURL": "https://github.com/apple/swift-argument-parser",
         "state": {
           "branch": null,
-          "revision": "15351c1cd009eba0b6e438bfef55ea9847a8dc4a",
-          "version": "0.3.0"
+          "revision": "92646c0cdbaca076c8d3d0207891785b3379cbff",
+          "version": "0.3.1"
         }
       },
       {
@@ -186,8 +177,8 @@
         "repositoryURL": "https://github.com/nicklockwood/SwiftFormat.git",
         "state": {
           "branch": null,
-          "revision": "38148d5185c6766debc26a7b222c4b08aa64db60",
-          "version": "0.46.1"
+          "revision": "3a131ff347e1c220251f4e315935684af821d3b8",
+          "version": "0.44.17"
         }
       },
       {
@@ -195,8 +186,8 @@
         "repositoryURL": "https://github.com/Realm/SwiftLint.git",
         "state": {
           "branch": null,
-          "revision": "da66a81710714112d51041264440987b992849c3",
-          "version": "0.40.0"
+          "revision": "b1c72069cafa6cdebfb9274806cd976c54d8dde5",
+          "version": "0.39.2"
         }
       },
       {
@@ -224,6 +215,15 @@
           "branch": null,
           "revision": "a4931e5c3bafbedeb1601d3bb76bbe835c6d475a",
           "version": "5.0.1"
+        }
+      },
+      {
+        "package": "System",
+        "repositoryURL": "https://github.com/eneko/System.git",
+        "state": {
+          "branch": null,
+          "revision": "3ffd9672edf3799077373add813ba1e10b369950",
+          "version": "1.0.0"
         }
       },
       {
