@@ -1,9 +1,9 @@
 **CLASS**
 
-# `ErrorCollection`
+# `NSErrorCollection`
 
 ```swift
-public class ErrorCollection: NSError
+public class NSErrorCollection: NSError
 ```
 
 ## Properties
