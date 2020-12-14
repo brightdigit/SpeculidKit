@@ -1,4 +1,3 @@
-import CairoSVG
 import Cocoa
 
 @available(*, deprecated)
