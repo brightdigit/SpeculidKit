@@ -1,5 +1,4 @@
 import AppKit
-import CairoSVG
 import Foundation
 
 public enum GeometryType {
@@ -10,7 +9,7 @@ public enum GeometryType {
 }
 
 public extension GeometryType {
-  var dimensionValue: CairoSVG.Dimension {
+  var dimensionValue: Dimension {
     switch self {
     case .width: return .width
     case .height: return .height

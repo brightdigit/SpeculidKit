@@ -1,4 +1,3 @@
-import CairoSVG
 import Cocoa
 
 public struct UnknownFileFormatError: Error {

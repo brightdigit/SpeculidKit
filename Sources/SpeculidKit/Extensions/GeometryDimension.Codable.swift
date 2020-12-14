@@ -1,5 +1,5 @@
+import Foundation
 import AssetLib
-import CairoSVG
 
 extension Geometry: Codable {
   internal static func parse(string: String) -> (dimension: GeometryType, value: Float)? {
@@ -62,6 +62,7 @@ extension Geometry: Codable {
 
 extension GeometryDimension {
   init(geometry: Geometry) {
+    
     self.init(value: CGFloat(geometry.value), dimension: geometry.dimension.dimensionValue)
   }
 }

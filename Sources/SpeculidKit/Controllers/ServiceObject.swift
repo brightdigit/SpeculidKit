@@ -1,9 +1,8 @@
 import AssetLib
 import Foundation
-
+import AppKit
 import SwiftDraw
 
-import CairoSVG.GeometryDimension
 
 struct NotImplementedError: Error, LocalizedError {
   let description: String
