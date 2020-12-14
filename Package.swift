@@ -25,7 +25,6 @@ let package = Package(
     .package(url: "https://github.com/BrightDigit/SwiftDraw", .branch("feature/throwing")),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.0.5"),
     .package(url: "https://github.com/eneko/SourceDocs", from: "1.0.0"),
-    .package(url: "https://github.com/BrightDigit/CairoSVG", from: "1.0.0"),
     .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0")
   ],
   targets: [
@@ -33,7 +32,7 @@ let package = Package(
     // Targets can depend on other targets in this package, and on products in packages which this package depends on.
     .target(
       name: "SpeculidKit",
-      dependencies: ["AssetLib", "GampKit", "CairoSVG", "SwiftDraw"]
+      dependencies: ["AssetLib", "GampKit", "SwiftDraw"]
     ),
     .target(
       name: "SpeculidKitCommand",

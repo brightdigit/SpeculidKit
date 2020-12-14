@@ -1,5 +1,4 @@
 import AssetLib
-import CairoSVG
 import Foundation
 
 public struct SpeculidImageSpecificationBuilder: SpeculidImageSpecificationBuilderProtocol {

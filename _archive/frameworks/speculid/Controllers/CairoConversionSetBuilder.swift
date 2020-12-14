@@ -1,4 +1,3 @@
-import CairoSVG
 import Foundation
 
 public struct CairoConversionSetBuilder: ImageConversionSetBuilderProtocol {
