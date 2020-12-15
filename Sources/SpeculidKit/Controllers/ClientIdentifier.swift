@@ -7,6 +7,7 @@
 //
 import Foundation
 
+@available(*, deprecated)
 public struct ClientIdentifier: ClientIdentifiable {
   public static let shared = ClientIdentifier()
   public let clientIdentifier: UUID

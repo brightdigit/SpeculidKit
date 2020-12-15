@@ -1,9 +1,9 @@
 **STRUCT**
 
-# `ArrayError`
+# `ErrorCollection`
 
 ```swift
-public struct ArrayError: Error
+public struct ErrorCollection: Error
 ```
 
 ## Properties

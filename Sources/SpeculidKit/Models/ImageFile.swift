@@ -1,4 +1,3 @@
-import CairoSVG
 import Cocoa
 
 public struct UnknownFileFormatError: Error {
@@ -9,6 +8,7 @@ public struct UnknownFileFormatError: Error {
   }
 }
 
+@available(*, deprecated)
 public class ImageFile: NSObject, ImageFileProtocol, NSSecureCoding {
   public static let supportsSecureCoding: Bool = true
 

@@ -1,5 +1,4 @@
 import AppKit
-import CairoSVG
 import Foundation
 
 public enum GeometryType {
@@ -10,7 +9,7 @@ public enum GeometryType {
 }
 
 public extension GeometryType {
-  var dimensionValue: CairoSVG.Dimension {
+  var dimensionValue: Dimension {
     switch self {
     case .width: return .width
     case .height: return .height
@@ -70,7 +69,7 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
     let geometry: Geometry?
 
     if let geometryString = try container.decodeIfPresent(String.self, forKey: CodingKeys.geometry) {
-      geometry = try Geometry(string: geometryString)
+      geometry = Geometry(string: geometryString)
     } else {
       geometry = nil
     }
@@ -87,7 +86,7 @@ public struct SpeculidSpecificationsFile: SpeculidSpecificationsFileProtocol, Co
   }
 
   public func encode(to encoder: Encoder) throws {
-    var container = try encoder.container(keyedBy: CodingKeys.self)
+    var container = encoder.container(keyedBy: CodingKeys.self)
 
     try container.encode(assetDirectoryRelativePath, forKey: CodingKeys.assetDirectoryRelativePath)
     try container.encode(sourceImageRelativePath, forKey: CodingKeys.sourceImageRelativePath)
